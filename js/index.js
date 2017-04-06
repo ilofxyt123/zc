@@ -83,7 +83,10 @@
                             $(".num").html("- "+num + "% -");
                         }
                         if (haveLoaded == ImageURL.length && callback) {
-                            setTimeout(callback, 500);
+                            setTimeout(function(){
+                                callback[0]();
+                                callback[1]();
+                            }, 500);
                         }
                     };
                     img.onerror = function() {};
@@ -170,7 +173,13 @@
             ///////////////////套后台后可删除///////////////////
         },
         start:function(){
-            Utils.preloadImage(this.ImageList)
+            Utils.preloadImage(this.ImageList,[this.loadleave,this.p1]);
+        },
+        p1:function(){
+            $(".P1").fadeIn();
+        },
+        loadleave:function(){
+            $(".P_loading").fadeOut();
         },
         addEvent:function(){
             $(window).on("orientationchange",function(e){
@@ -198,6 +207,7 @@ $(function(){
 window.onload = function(){
     var Main = new main();
     Main.addEvent();
+    // Main.start();
     window.test = Main;
     console.log(test)
 };

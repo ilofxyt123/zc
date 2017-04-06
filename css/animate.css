@@ -1,0 +1,108 @@
+@keyframes ani-birdfly {
+    0%{
+        background-position:0 0;
+    }
+    100%{
+        background-position:-298px 0;
+    }
+}
+
+@-webkit-keyframes ani-birdfly {
+    0%{
+        background-position:0 0;
+    }
+    100%{
+        background-position:-298px 0;
+    }
+}
+
+.ani-birdfly{
+    -webkit-animation-name:ani-birdfly;
+    -webkit-animation-duration: 0.2s;
+    /*-webkit-animation-timing-function: linear;*/
+    -webkit-animation-timing-function: steps(2,end);
+    /*-webkit-animation-delay: 2s;*/
+    -webkit-animation-iteration-count: infinite;
+    -webkit-animation-direction: normal;
+    -webkit-animation-play-state: running;
+
+    animation-name:ani-birdfly;
+    animation-duration: 0.2s;
+    /*animation-timing-function: linear;*/
+    animation-timing-function: steps(2,end);
+    /*animation-delay: 2s;*/
+    animation-iteration-count: infinite;
+    animation-direction: normal;
+    animation-play-state: running;
+    /* Safari and Chrome: */
+}
+
+@keyframes ani-drop {
+    0%{
+        height:0;
+    }
+    25%{
+        height:33px;
+    }
+    26%{
+        height:52px;
+    }
+    62%{
+        height:81px;
+    }
+    63%{
+        height:104px;
+    }
+    100%{
+        height:132px;
+    }
+}
+
+@-webkit-keyframes ani-drop {
+    0%{
+        height:0;
+    }
+    25%{
+        height:33px;
+    }
+    26%{
+        height:52px;
+    }
+    62%{
+        height:81px;
+    }
+    63%{
+        height:104px;
+    }
+    100%{
+        height:132px;
+    }
+}
+.ani-drop {
+    -webkit-animation:ani-drop 1s ease-out 0s 1 normal forwards running;
+    -moz-animation:ani-drop 1s ease-out 0s 1 normal forwards running;
+    -ms-animation:ani-drop 1s ease-out 0s 1 normal forwards running;
+    -o-animation:ani-drop 1s ease-out 0s 1 normal forwards running;
+    animation:ani-drop 1s ease-out 0s 1 normal forwards running;
+}
+
+@-webkit-keyframes ani-tunbig {
+    0% {
+        -webkit-transform: scale(1);
+        -webkit-transform-origin: center center;
+        opacity: 1;
+    }
+    100% {
+        -webkit-transform: scale(2);
+        -webkit-transform-origin: center center;
+        opacity: 0;
+    }
+}
+
+.ani-tunbig {
+    -webkit-animation:ani-tunbig 1s linear 0s infinite normal forwards running;
+    -moz-animation:ani-tunbig 1s linear 0s infinite normal forwards running;
+    -ms-animation:ani-tunbig 1s linear 0s infinite normal forwards running;
+    -o-animation:ani-tunbig 1s linear 0s infinite normal forwards running;
+    animation:ani-tunbig 1s linear 0s infinite normal forwards running;
+}
