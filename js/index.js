@@ -140,47 +140,66 @@
     a.output = {main:Main,media:Media,utils:Utils};
 
     var main = function(){
-        this.isEnd = $("#is_end").val();//活动是否结束
-        this.havePay = $("#havePay").val();//默认没付过18元
+        this.isEnd;//活动结束标志
+        this.havePay;//付款标记,也是参与活动的标志
+        this.isVip;//会员标记
+        this.guanzhu;//关注标记
+        this.FromTuiSong;
+
+        this.picUrl = "images/";//图片路径
+        this.ImageList = [
+            this.picUrl+"phone.png",
+            this.picUrl+"weile.png"
+        ];
         this.init();
     };
     main.prototype = {
         init:function(){
-            console.log(Utils);
+            this.isEnd = $("#is_end").val();
+            this.havePay = $("#havePay").val();
+            this.isVip = $("#is_vip").val();
+            this.guanzhu = $("#have_guanzhu").val();
+            this.FromTuiSong = $("#FromTuiSong").val();
+
+            ///////////////////套后台后可删除///////////////////
+            this.isEnd = !!Number(this.isEnd);
+            this.havePay = !!Number(this.havePay);
+            this.isVip = !!Number(this.isVip);
+            this.guanzhu = !!Number(this.guanzhu);
+            this.FromTuiSong = !!Number(this.FromTuiSong);
+            ///////////////////套后台后可删除///////////////////
         },
         start:function(){
-
+            Utils.preloadImage(this.ImageList)
+        },
+        addEvent:function(){
+            $(window).on("orientationchange",function(e){
+                if(window.orientation == 0 || window.orientation == 180 )
+                {
+                    $(".hp").hide();
+                }
+                else if(window.orientation == 90 || window.orientation == -90)
+                {
+                    $(".hp").show();
+                }
+            });
         },
     };
     window.main = main;
 /*-----------------------------事件绑定--------------------------------*/
 }(window)
 $(function(){
-    var main = output.main,
-        media = output.media,
-        utils = output.utils;
-    media.WxMediaInit();
-    utils.E(window,"touchstart",function(){media.MutedPlay("video");console.log(1)})
-
-
-
-
-
-
-    $(window).on("orientationchange",function(e){
-        if(window.orientation == 0 || window.orientation == 180 )
-        {
-            $(".hp").hide();
-        }
-        else if(window.orientation == 90 || window.orientation == -90)
-        {
-            $(".hp").show();
-        }
-    });
+    // var main = output.main,
+    //     media = output.media,
+    //     utils = output.utils;
+    // media.WxMediaInit();
+    // utils.E(window,"touchstart",function(){media.MutedPlay("video");console.log(1)})
 });
 window.onload = function(){
     var Main = new main();
-    Main.init();
+    Main.addEvent();
+    window.test = Main;
+    console.log(test)
 };
 
 
