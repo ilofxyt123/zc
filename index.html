@@ -44,6 +44,7 @@
     .P_bg{z-index:1;}
         .bg-pic{left:0;top:0;}
         .bg1-bottom{width:640px;height:210px;position: absolute;top:800px;left:0;}
+        .bg2-bottom{width:640px;height:210px;position: absolute;top:842px;left:0;}
             .bg-left-leaf1{top:0;left:-15px;}
             .bg-left-leaf2{top:112px;left:135px;}
             .bg-right-leaf1{top:40px;right:150px;}
@@ -59,10 +60,10 @@
             .num{position: absolute;width:100%;top:314px;text-align: center;}
 </style>
 
-<div class="container P_bg P_bg1">
+<div class="container P_bg P_bg1 none">
     <img src="images/bg1.jpg" class="bg-pic">
 </div>
-<div class="container P_bg P_bg2 none">
+<div class="container P_bg P_bg2">
     <img src="images/bg2.jpg" class="bg-pic">
 </div>
 <div class="container P_bg P_bg3 none">
@@ -246,21 +247,100 @@
 </style>
 
 <div class="container P_active">
-    <img src="images/" class="act-txt">
+    <img src="images/p3_pic01.png" class="act-txt">
+    <p class="list color1">xxxxxxxxxxxxxx</p>
+
     <div class="header">
-        <img src="images/">
+        <img src="images/p3_pic09.png" class="hd-plane">
+        <img src="images/p3_pic15.png" class="hd-center-green">
+        <img src="images/p3_pic08.png" class="hd-left-flower">
+        <img src="images/p3_pic19.png" class="hd-right-timeout">
+        <img src="images/p3_pic17.png" class="hd-right-leaf1">
+        <img src="images/p3_pic18.png" class="hd-right-leaf2">
+
+        <span class="last-day">10</span>
+
+        <div class="hd-left-scale">
+            <img src="images/p3_pic10.png" class="left-scale1">
+            <img src="images/p3_pic11.png" class="left-scale2">
+            <img src="images/p3_pic14.png" class="left-scale3">
+            <img src="images/p3_pic12.png" class="left-scale4">
+        </div>
+        <div class="hd-right-scale">
+            <img src="images/p3_pic16.png" class="right-scale1">
+            <img src="images/p3_pic13.png" class="right-scale2">
+        </div>
     </div>
+
     <div class="act-content">
         <img src="images/p3_pic06.png" class="act-bg">
+        <div class="act-txt1 none havent">
+            <img src="images/p3_pic07.png">
+            <span class="act-txt1-number color1">21</span>
+        </div><!--未参与活动-->
+        <img src="images/over.png" class="act-txt2 has none"><!--参与活动-->
+
+        <div class="progress-bg">
+            <img src="images/p3_pic03.png" class="progress-bar">
+        </div>
+        <div class="people">
+            <span class="now-people color1">276</span>
+            <img src="images/p3_pic04.png">
+        </div>
+        <img src="images/p3_pic05.png" class="act-txt3">
+        <img src="images/tip.png" class="act-txt4">
+    </div>
+
+    <img src="images/p3_pic22.png" class="go-btn">
+    <div class="chaxun has none">
+        <img src="images/p3_pic22.png" class="chaxun-btn">
+        <img src="images/p3_pic20.png" class="travel-list-btn">
+    </div>
+
+    <div class="bg2-bottom">
+        <img src="images/p2_pic06.png" class="bg-left-leaf1">
+        <img src="images/p2_pic07.png" class="bg-left-leaf2">
+        <img src="images/p2_pic09.png" class="bg-right-leaf1">
+        <img src="images/p2_pic08.png" class="bg-right-leaf2">
     </div>
 </div>
 
 <style>
     .P_active{}
-        .act-txt{}
-        .header{}
-        .act-content{}
-
+        .act-txt{top:95px;left:50%;margin-left:-131px;}
+        p.list{width:100%;position: absolute;top:135px;text-align: center;}
+        .header{width:531px;height:280px;position:absolute;left:50%;margin-left:-265px;top:175px;z-index:5;}
+            .hd-plane{left:90px;top:0;}
+            .hd-center-green{left:78px;top:10px;z-index:10;}
+            .hd-left-flower{left:52px;bottom:0;z-index:20;}
+            .hd-right-timeout{right:10px;top:158px;z-index:20;}
+            .hd-right-leaf1{top:60px;right:80px;z-index:5;}
+            .hd-right-leaf2{top:115px;right:-8px;z-index:5;}
+            .last-day{position: absolute;width:50px;height:50px;right:46px;bottom:46px;text-align: center;color:#f4a67e;font-size:40px;line-height:50px;z-index:21;font-weight:bold;}
+            .hd-left-scale{width:105px;height:201px;position:absolute;top:52px;left:22px;z-index:15;}
+                .left-scale1{left:0;top:150px;z-index:4;}
+                .left-scale2{left:10px;top:80px;z-index:3;}
+                .left-scale3{left:12px;top:0;z-index:1;}
+                .left-scale4{right:0;top:50px;z-index:3;}
+            .hd-right-scale{position:absolute;width:106px;height:218px;right:0;z-index:9;}
+                .right-scale1{top:0;right:65px;}
+                .right-scale2{top:92px;right:0;}
+        .act-content{width:531px;height:384px;position: absolute;left:50%;margin-left:-265px;top:388px;z-index:4;}
+            .act-bg{position: absolute;}
+            .act-txt1{width:269px;height:22px;position: absolute;left:50%;margin-left:-135px;top:88px;}
+                .act-txt1-number{position:absolute;width:40px;height:22px;line-height:22px;font-size:24px;left:214px;top:0;}
+            .act-txt2{top:88px;left:50%;margin-left:-110px;}
+            .progress-bg{width:313px;height:12px;background-image: url("images/p3_pic02.png");background-repeat:no-repeat;position: absolute;left:50%;margin-left:-156px;top:120px;overflow: hidden;}
+                .progress-bar{width:100%;left:0;height:12px;transform:scaleX(0);transform-origin:left center;}
+            .people{position:absolute;width:120px;height:22px;left:50%;margin-left:-60px;top:150px;}
+                .now-people{position:absolute;width:44px;height:22px;left:0;text-align: center;font-size:24px;line-height:22px;}
+                .people img{right:0;top:0;}
+            .act-txt3{top:185px;left:50%;margin-left:-103px;}
+            .act-txt4{top:270px;left:50%;margin-left:-217px;}
+        .go-btn{top:806px;left:50%;margin-left:-141px;}
+        .chaxun{width:282px;height:125px;position: absolute;left:50%;margin-left:-141px;top:806px;}
+        .chaxun-btn{top:0;}
+        .travel-list-btn{bottom:0;left:50%;margin-left:-96px;}
 </style>
 
 <div class="container P_code none">
