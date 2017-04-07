@@ -152,14 +152,14 @@
 
 <div class="container P_Vip1 none">
     <img src="images/p2_pic10.png" class="vip1-tip">
-    <div class="selectBox">
-        <select id="province" class="province select1 color1">
+    <div class="selectBox selectBox1">
+        <select  class="province select1 color1">
             <option>浙江省</option>
         </select>
-        <select id="city" class="city select1 color1">
+        <select  class="city select1 color1">
             <option>嘉兴市</option>
         </select>
-        <select id="address" class="address select2 color1">
+        <select  class="address select2 color1">
             <option>嘉兴八佰伴店</option>
         </select>
     </div>
@@ -184,7 +184,8 @@
 <style>
     .P_Vip1{}
         .vip1-tip{top:162px;left:50%;margin-left:-233px;}
-        .selectBox{width:462px;height:150px;position: absolute;top:338px;left:50%;margin-left:-231px;}
+        .selectBox{width:462px;height:150px;position: absolute;left:50%;margin-left:-231px;}
+        .selectBox1{top:338px;}
             .select1{position:absolute;top:0;width:216px;height:51px;border:none;outline:none;background-image:url("images/p2_pic11.png");background-repeat:no-repeat;line-height:54px;font-size:26px;text-align:center;background-color:rgba(0,0,0,0);-webkit-appearance:none;padding-left:36px;}
             .province{left:0;}
             .city{right:0;}
@@ -246,7 +247,30 @@
     .P_Vip1{}
 </style>
 
-<div class="container P_active none">
+<div class="container P_mask">
+        <img src="images/p3.0_png3.png" class="mask-txt1">
+        <img src="images/p3.0_png4.png" class="mask-txt2">
+        <img src="images/p3.0_png1.png" class="mask-txt3">
+        <img src="images/p3.0_png5.png" class="mask-txt4">
+
+        <div class="point mask-point">
+            <span class="out"></span>
+            <span class="out-change ani-tunbig"></span>
+            <span class="in"></span>
+        </div>
+        <img src="images/p3.0_png2.png" class="mask-go">
+</div>
+<style>
+    .P_mask{background-color:rgba(0,0,0,0.8);position:absolute;width:100%;height:100%;left:0;top:0;z-index:100;}
+            .mask-txt1{top:85px;left:50%;margin-left:-178px;}
+            .mask-txt2{top:238px;left:50%;margin-left:-186px;}
+            .mask-txt3{top:506px;left:50%;margin-left:-183px;}
+            .mask-txt4{top:743px;left:50%;margin-left:-162px;}
+            .mask-point{top:867px;left:50%;margin-left:-17px;}
+            .mask-go{top:914px;left:50%;margin-left:-46px;}
+</style>
+<div class="container P_active">
+
     <img src="images/p3_pic01.png" class="act-txt">
     <p class="list color1">xxxxxxxxxxxxxx</p>
 
@@ -343,51 +367,116 @@
         .travel-list-btn{bottom:0;left:50%;margin-left:-96px;}
 </style>
 
-<div class="container P_code">
-    <img src="images/p1_pic12.png" class="p1-1">
-    <img src="images/p1_pic02.png" class="p1-2">
-    <img src="images/p1_pic03.png" class="p1-3">
-    <img src="images/p3_pic09.png" class="code-plane">
-    <div class="codeBox">
-        <img src="images/code.png" class="code-pic">
-        <img src="images/p3_pic10.png" class="code-left-leaf">
-        <img src="images/p3_pic17.png" class="code-right-leaf1">
-        <img src="images/p3_pic18.png" class="code-right-leaf2">
+<div class="container P_chaxun none">
+    <img src="images/p4_pic17.png" class="back">
+    <div class="prize-result1 none"><!--4999大奖-->
+        <img src="images/p4_pic14.png" class="chaxun-title">
+        <img src="images/p4_pic12.png" class="prize4999">
+        <img src="images/p4_pic13.png" class="chaxun-result1-btn1">
+        <img src="images/p4_pic08.png" class="chaxun-result1-btn2">
+        <img src="images/p4_pic09.png" class="chaxun-result1-btn3">
     </div>
-    <div class="p1-bottom">
-        <img src="images/p1_pic20.png" class="bottom-move1 ani-move1">
-        <img src="images/p1_pic21.png" class="bottom-move2 ani-move2">
-        <img src="images/p1_pic19.png" class="grass">
+    <div class="prize-result2 none">
+        <div class="isEnd4999 none">
+            <img src="images/p4_pic18.png" class="result2-end-title">
+            <div class="result2-prizeBox result2-end-prizeBox">
+                <img src="images/p4_pic07.png" class="result2-prize">
+                <img src="images/p4_pic16.png" class="result2-prize-txt">
+            </div>
 
-        <img src="images/p1_pic17.png" class="left-leaf">
-        <img src="images/p1_pic22.png" class="left-tower1">
-        <img src="images/p1_pic26.png" class="left-tower2">
-        <img src="images/p1_pic24.png" class="Eiffel">
-        <img src="images/p1_pic25.png" class="Statue">
-        <img src="images/p1_pic23.png" class="right-door">
-        <img src="images/p1_pic28.png" class="center-green">
+        </div>
+        <div class="no4999">
+            <img src="images/p4_pic15.png" class="result2-Noend-title">
+            <div class="result2-prizeBox result2-Noend-prizeBox">
+                <img src="images/p4_pic07.png" class="result2-prize">
+                <img src="images/p4_pic16.png" class="result2-prize-txt">
+            </div>
+        </div>
+        <img src="images/p4_pic08.png" class="chaxun-result2-btn1"><!--查看可使用门店-->
+        <img src="images/p4_pic09.png" class="chaxun-result2-btn2"><!--邀好友一起旅行-->
+    </div><!--188新品券-->
 
-        <img src="images/p1_pic18.png" class="right-leaf1">
-        <img src="images/p1_pic13.png" class="right-leaf2">
-        <img src="images/p1_pic14.png" class="right-leaf3">
-        <img src="images/p1_pic16.png" class="right-leaf4">
-        <img src="images/p1_pic10.png" class="center-flower">
-        <img src="images/p1_pic09.png" class="center-leaf">
-        <img src="images/p1_pic15.png" class="left-leaf1">
-        <img src="images/p1_pic11.png" class="left-leaf2">
-        <img src="images/p1_pic08.png" class="left-leaf3">
+    <div class="bg2-bottom">
+        <img src="images/p2_pic06.png" class="bg-left-leaf1">
+        <img src="images/p2_pic07.png" class="bg-left-leaf2">
+        <img src="images/p2_pic09.png" class="bg-right-leaf1">
+        <img src="images/p2_pic08.png" class="bg-right-leaf2">
     </div>
+    <img src="images/p1_pic12.png" class="bg1-top">
+</div>
+<style>
+    .P_chaxun{}
+        .back{left:47px;top:88px;}
+        .prize-result1{position:absolute;width:640px;height:770px;top:105px;}
+            .chaxun-title{top:0;left:50%;margin-left:-189px;}
+            .prize4999{top:205px;left:50%;margin-left:-175px;}
+            .chaxun-result1-btn1{top:543px;left:50%;margin-left:-168px;}
+            .chaxun-result1-btn2{top:626px;left:50%;margin-left:-168px;}
+            .chaxun-result1-btn3{top:705px;left:50%;margin-left:-168px;}
+        .prize-result2{position:absolute;width:640px;height:734px;top:125px;}
+            .isEnd4999{position:absolute;width:640px;height:590px;top:0;}
+                .result2-end-title{top:0;left:50%;margin-left:-235px;}
+                .result2-prizeBox{position:absolute;width:310px;height:220px;left:50%;margin-left:-155px;}
+                .result2-end-prizeBox{top:240px;}
+                    .result2-prize{top:0;left:5px;}
+                    .result2-prize-txt{bottom:0;left:0;}
+            .no4999{position:absolute;width:640px;height:590px;top:0;}
+                .result2-Noend-title{top:0;left:50%;margin-left:-193px;}
+                .result2-Noend-prizeBox{top:253px;}
+            .chaxun-result2-btn1{top:590px;left:50%;margin-left:-168px;}
+            .chaxun-result2-btn2{top:673px;left:50%;margin-left:-168px;}
+</style>
+
+<div class="container P_Address none">
+    <img src="images/p4_pic19.png" class="address-txt">
+    <div class="selectBox selectBox2">
+        <select  class="province select1 color1 addDataProvince">
+            <option>浙江省</option>
+        </select>
+        <select class="city select1 color1 addDataCity">
+            <option>嘉兴市</option>
+        </select>
+        <select  class="address select2 color1 addDataAddress">
+            <option>嘉兴八佰伴店</option>
+        </select>
+    </div>
+    <img src="images/p1_pic29.png" class="add-xx">
+    <img src="images/p4_pic20.png" class="add-tip">
+</div>
+<style>
+    .P_Address{background-color:rgba(0,0,0,0.8);z-index:200;}
+        .address-txt{top:172px;left:50%;margin-left:-200px;}
+        .selectBox2{top:336px;}
+        .add-tip{top:614px;left:50%;margin-left:-230px;}
+        .add-xx{left:50%;margin-left:-16px;top:854px;}
+</style>
+<div class="container P_code none">
+    <img src="images/code.jpg" style="top:0;left:0;">
 </div><!--二维码-->
-
 <style>
     .P_code{}
-        .codeBox{width:293px;height:292px;position: absolute;left: 50%;margin-left:-146px;}
-            .code-pic{}
-            .code-left-leaf{}
-            .code-right-leaf1{}
-            .code-right-leaf2{}
 </style>
-<div class="container P_end none"></div>
+
+<div class="container P_end-noPay none">
+    <img src="images/over-noPay.jpg" style="left:0;top:0;z-index:1;">
+    <div class="noPay-nameList-btn"></div>
+</div>
+<style>
+    .P_end-noPay{}
+        .noPay-nameList-btn{width:336px;height:60px;position: absolute;top:695px;left:50%;margin-left:-168px;z-index:2;}
+</style>
+
+<div class="container P_end-Pay none">
+    <img src="images/over-pay.jpg" style="left:0;top:0;z-index:1;">
+    <div class="pend-chaxun-btn"></div>
+    <div class="pay-nameList-btn"></div>
+</div>
+
+<style>
+    .P_end-Pay{}
+        .pend-chaxun-btn{width:336px;height:60px;position:absolute;top:614px;left:50%;margin-left:-168px;z-index:2;}
+        .pay-nameList-btn{width:336px;height:60px;position: absolute;top:695px;left:50%;margin-left:-168px;z-index:2;}
+</style>
 
 <div class="container P_rule none">
     <div class="rule-mask">
