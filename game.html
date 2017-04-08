@@ -82,11 +82,11 @@
     <img src="images/p1_pic12.png" class="bg1-top">
 </div>
 
-<div class="container P_game">
+<div class="container P_game none">
     <div class="gameScoreBox">
         <img src="images/p4_pic02.png" class="game-score-bg">
-        <span class="sec">30s</span>
-        <span class="game-score">0</span>
+        <span class="sec color1">30</span>
+        <span class="game-score color1">0</span>
     </div>
 
     <div class="stampBox">
@@ -101,12 +101,61 @@
     .P_game{}
         .gameScoreBox{width:140px;height:90px;position: absolute;left:50px;top:116px;}
             .game-score-bg{z-index:-1;left:0;top:0;}
-            .sec{position: absolute;}
-            .game-score{position: absolute;}
+            .sec{position: absolute;font-size:26px;width:60px;height:30px;line-height:30px;left:66px;top:-1px;text-align: center;}
+            .game-score{position: absolute;font-size:26px;width:60px;height:30px;line-height:30px;left:68px;top:62px;text-align: center;}
         .stampBox{width:350px;height:240px;position: absolute;top:806px;left:50%;margin-left:-175px;}
             .stampList{width:227px;height:325px;position: absolute;left:53px;bottom:46px;}
                 .stamp-staic{position: absolute;left:0;top:0;}
             .stamp-bottom{position: absolute;left:0;top:0;z-index: -1;}
+</style>
+
+<div class="container P_game_result">
+    <img src="images/p4_pic05.png" class="game-result-top">
+    <img src="images/p4_pic06.png" class="game-result-txt">
+    <img src="images/p4_pic07.png" class="game-result-188">
+    <img src="images/p4_pic08.png" class="game-result-btn1">
+    <img src="images/p4_pic09.png" class="game-result-btn2">
+
+    <div class="game-result-Box">
+        <div class="bar-top-txt1">
+            <img src="images/p3_pic07.png">
+            <span class="bar-top-txt1-number color1">21</span>
+        </div>
+
+        <div class="progress-bg">
+            <img src="images/p3_pic03.png" class="progress-bar">
+        </div>
+
+        <div class="people">
+            <span class="now-people color1">276</span>
+            <img src="images/p3_pic04.png">
+        </div>
+
+        <img src="images/p4_pic10.png" class="game-result-total">
+    </div>
+
+    <img src="images/p4_pic11.png" class="game-result-detail">
+
+
+
+</div>
+<style>
+    .P_game_result{}
+        .game-result-top{left:50%;margin-left:-77px;top:-57px;}
+        .game-result-txt{top:140px;left:50%;margin-left:-196px;}
+        .game-result-188{top:303px;left:50%;margin-left:-150px;}
+        .game-result-btn1{top:505px;left:50%;margin-left:-168px;}
+        .game-result-btn2{top:588px;left:50%;margin-left:-168px;}
+        .game-result-Box{width:313px;height:130px;position: absolute;top:718px;left:50%;margin-left:-157px;}
+            .bar-top-txt1{width:269px;height:22px;position: absolute;top:0;left:50%;margin-left:-135px;}
+                .bar-top-txt1-number{position:absolute;width:40px;height:22px;line-height:22px;font-size:24px;left:214px;top:0;}
+            .progress-bg{width:313px;height:12px;background-image: url("images/p3_pic02.png");background-repeat:no-repeat;position: absolute;left:0;top:36px;overflow: hidden;}
+                .progress-bar{width:100%;left:0;height:12px;transform:scaleX(0);transform-origin:left center;}
+            .people{position:absolute;width:120px;height:22px;left:50%;margin-left:-60px;top:62px;}
+                .now-people{position:absolute;width:44px;height:22px;left:0;text-align: center;font-size:24px;line-height:22px;}
+                .people img{right:0;top:0;}
+            .game-result-total{left:50%;margin-left:-103px;bottom:0;}
+        .game-result-detail{top:896px;left:50%;margin-left:-48px;}
 </style>
 
 <div class="container P_gameMask none">
