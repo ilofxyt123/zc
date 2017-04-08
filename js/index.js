@@ -84,8 +84,7 @@
                         }
                         if (haveLoaded == ImageURL.length && callback) {
                             setTimeout(function(){
-                                callback[0]();
-                                callback[1]();
+                                callback();
                             }, 500);
                         }
                     };
@@ -147,12 +146,143 @@
         this.havePay;//付款标记,也是参与活动的标志
         this.isVip;//会员标记
         this.guanzhu;//关注标记
-        this.FromTuiSong;
+        this.FromTuiSong;//从推送进入页面
+        this.prizeType;//奖品类型，0代表未参与过活动，1代表188新品券，2代表4999旅行
+
+        this.touch={
+            ScrollObj:undefined,
+            isScroll:false,
+            limit:0,
+            overlimit:false,
+            StartY:0,
+            NewY:0,
+            addY:0,
+            scrollY:0,
+        };
 
         this.picUrl = "images/";//图片路径
         this.ImageList = [
+            this.picUrl+"bg1.jpg",
+            this.picUrl+"bg2.jpg",
+            this.picUrl+"bg3.jpg",
+            this.picUrl+"bird_small.png",
+            this.picUrl+"load-pic.png",
+            this.picUrl+"logo.png",
+            this.picUrl+"music_btn.png",
+            this.picUrl+"over.png",
+            this.picUrl+"over-noPay.jpg",
+            this.picUrl+"over-pay.jpg",
+            this.picUrl+"p1_pic01.png",
+            this.picUrl+"p1_pic02.png",
+            this.picUrl+"p1_pic03.png",
+            this.picUrl+"p1_pic04.png",
+            this.picUrl+"p1_pic05.png",
+            this.picUrl+"p1_pic08.png",
+            this.picUrl+"p1_pic09.png",
+            this.picUrl+"p1_pic10.png",
+            this.picUrl+"p1_pic11.png",
+            this.picUrl+"p1_pic12.png",
+            this.picUrl+"p1_pic13.png",
+            this.picUrl+"p1_pic14.png",
+            this.picUrl+"p1_pic15.png",
+            this.picUrl+"p1_pic16.png",
+            this.picUrl+"p1_pic17.png",
+            this.picUrl+"p1_pic18.png",
+            this.picUrl+"p1_pic18.png",
+            this.picUrl+"p1_pic19.png",
+            this.picUrl+"p1_pic20.png",
+            this.picUrl+"p1_pic21.png",
+            this.picUrl+"p1_pic22.png",
+            this.picUrl+"p1_pic23.png",
+            this.picUrl+"p1_pic24.png",
+            this.picUrl+"p1_pic25.png",
+            this.picUrl+"p1_pic26.png",
+            this.picUrl+"p1_pic27.png",
+            this.picUrl+"p1_pic28.png",
+            this.picUrl+"p1_pic29.png",
+            this.picUrl+"p1_pic30.png",
+            this.picUrl+"p2_pic01.png",
+            this.picUrl+"p2_pic02.png",
+            this.picUrl+"p2_pic03.png",
+            this.picUrl+"p2_pic04.png",
+            this.picUrl+"p2_pic05.png",
+            this.picUrl+"p2_pic06.png",
+            this.picUrl+"p2_pic07.png",
+            this.picUrl+"p2_pic08.png",
+            this.picUrl+"p2_pic09.png",
+            this.picUrl+"p2_pic10.png",
+            this.picUrl+"p2_pic11.png",
+            this.picUrl+"p2_pic12.png",
+            this.picUrl+"p2_pic13.png",
+            this.picUrl+"p3.0_png1.png",
+            this.picUrl+"p3.0_png2.png",
+            this.picUrl+"p3.0_png3.png",
+            this.picUrl+"p3.0_png4.png",
+            this.picUrl+"p3.0_png5.png",
+            this.picUrl+"p3_pic01.png",
+            this.picUrl+"p3_pic02.png",
+            this.picUrl+"p3_pic03.png",
+            this.picUrl+"p3_pic04.png",
+            this.picUrl+"p3_pic05.png",
+            this.picUrl+"p3_pic06.png",
+            this.picUrl+"p3_pic07.png",
+            this.picUrl+"p3_pic08.png",
+            this.picUrl+"p3_pic09.png",
+            this.picUrl+"p3_pic10.png",
+            this.picUrl+"p3_pic11.png",
+            this.picUrl+"p3_pic12.png",
+            this.picUrl+"p3_pic13.png",
+            this.picUrl+"p3_pic14.png",
+            this.picUrl+"p3_pic15.png",
+            this.picUrl+"p3_pic16.png",
+            this.picUrl+"p3_pic17.png",
+            this.picUrl+"p3_pic18.png",
+            this.picUrl+"p3_pic19.png",
+            this.picUrl+"p3_pic20.png",
+            this.picUrl+"p3_pic21.png",
+            this.picUrl+"p3_pic22.png",
+            this.picUrl+"p4_pic01.png",
+            this.picUrl+"p4_pic02.png",
+            this.picUrl+"p4_pic03.png",
+            this.picUrl+"p4_pic04.png",
+            this.picUrl+"p4_pic05.png",
+            this.picUrl+"p4_pic06.png",
+            this.picUrl+"p4_pic07.png",
+            this.picUrl+"p4_pic08.png",
+            this.picUrl+"p4_pic09.png",
+            this.picUrl+"p4_pic10.png",
+            this.picUrl+"p4_pic11.png",
+            this.picUrl+"p4_pic12.png",
+            this.picUrl+"p4_pic13.png",
+            this.picUrl+"p4_pic14.png",
+            this.picUrl+"p4_pic15.png",
+            this.picUrl+"p4_pic16.png",
+            this.picUrl+"p4_pic17.png",
+            this.picUrl+"p4_pic18.png",
+            this.picUrl+"p4_pic19.png",
+            this.picUrl+"p4_pic20.png",
+            this.picUrl+"p4_pic21.png",
+            this.picUrl+"p4_pic22.png",
+            this.picUrl+"p4_pic23.png",
+            this.picUrl+"p4_pic24.png",
+            this.picUrl+"p4_pic25.png",
+            this.picUrl+"p4_pic26.png",
+            this.picUrl+"p4_pic27.png",
+            this.picUrl+"p4_pic28.png",
+            this.picUrl+"p4_pic29.png",
+            this.picUrl+"p4_pic30.png",
+            this.picUrl+"p4_pic31.png",
+            this.picUrl+"p4_pic32.png",
+            this.picUrl+"p4_pic33.png",
+            this.picUrl+"p4_pic34.png",
+            this.picUrl+"p4_pic35.png",
+            this.picUrl+"p4_pic36.png",
+            this.picUrl+"p4_pic37.png",
             this.picUrl+"phone.png",
-            this.picUrl+"weile.png"
+            this.picUrl+"rule_btn.png",
+            this.picUrl+"tip.png",
+            this.picUrl+"weile.png",
+
         ];
         this.init();
     };
@@ -163,6 +293,7 @@
             this.isVip = $("#is_vip").val();
             this.guanzhu = $("#have_guanzhu").val();
             this.FromTuiSong = $("#FromTuiSong").val();
+            this.prizeType = $("#FromTuiSong").val();
 
             ///////////////////套后台后可删除///////////////////
             this.isEnd = !!Number(this.isEnd);
@@ -173,15 +304,163 @@
             ///////////////////套后台后可删除///////////////////
         },
         start:function(){
-            Utils.preloadImage(this.ImageList,[this.loadleave,this.p1]);
+            Utils.preloadImage(this.ImageList,this.startCallback.bind(this),true);
         },
-        p1:function(){
-            $(".P1").fadeIn();
+        startCallback:function(){
+
+            ///////////////活动结束///////////////
+            if(this.isEnd){
+                if(this.havePay){//已经参与过活动
+                    this.pend_pay();
+                    return;
+                }
+                if(!this.havePay){//如果没参与过活动
+                    this.pend_noPay();
+                    return;
+                }
+            }
+            ///////////////活动结束///////////////
+
+            ///////////////活动未结束///////////////
+            this.top();
+            this.loadleave();
+            if(!this.guanzhu){//未关注公众号
+                this.pcode();
+                return;
+            }
+            if(this.havePay){//已经支付过
+                $(".has").removeClass("none");
+                this.pact();
+                return;
+            }
+            $(".havent").removeClass("none");
+            this.p1();
+            ///////////////活动未结束///////////////
+        },
+        top:function(){
+            $(".music-btn,.rule-btn").removeClass("none");
         },
         loadleave:function(){
             $(".P_loading").fadeOut();
         },
+        p1:function(){
+            $(".P1").fadeIn();
+        },
+        p1leave:function(){
+            $(".P1").fadeOut();
+        },
+        pvip1:function(){
+            $(".P_Vip1").fadeIn(function(){
+                $(".select-ban").addClass("none");
+            });
+        },
+        pvip1leave:function(){
+            $(".P_Vip1").fadeOut();
+        },
+        pvip2:function(){
+            $(".P_Vip2").fadeIn();
+        },
+        pvip2leave:function(){
+            $(".P_Vip2").fadeOut();
+        },
+        pnotvip:function(){},
+        pnotvipleave:function(){},
+        pchaxun:function(){
+            $(".P_chaxun").fadeIn();
+        },
+        pchaxunleave:function(){
+            $(".P_chaxun").fadeOut();
+        },
+        pact_mask:function(){
+            $(".P_mask").fadeIn();
+        },
+        pact_maskleave:function(){
+            $(".P_mask").fadeOut();
+        },
+        pact:function(){
+            $(".P_active").fadeIn();
+        },
+        pactleave:function(){
+            $(".P_active").fadeOut();
+        },
+        plist:function(){
+            $(".P_List").fadeIn();
+        },
+        plistleave:function(){
+            $(".P_List").fadeOut();
+        },
+        pend_pay:function(){
+            $(".P_end-Pay").fadeIn();
+        },
+        pend_noPay:function(){
+            $(".P_end-noPay").fadeIn();
+        },
+        pcode:function(){
+            $(".P_code").fadeIn();
+        },
         addEvent:function(){
+            var _self = this;
+            /////////p1//////////
+            $(".p1-point").on("touchend",function(){
+                _self.p1leave();
+                if(_self.isVip){
+                    _self.pvip1();
+                    return;
+                }
+                _self.pnotvip();
+            });
+            /////////p1//////////
+
+            /////////vip1//////////
+            $(".vip-point").on("touchend",function(){
+                _self.pvip1leave();
+                _self.pvip2();
+            });
+            /////////vip1//////////
+
+            /////////vip2//////////
+            $(".P_Vip2").on({
+                touchstart:function(e){
+                    _self.touch.StartY = e.originalEvent.changedTouches[0].pageY;
+                    _self.touch.NewY = e.originalEvent.changedTouches[0].pageY;
+                },
+                touchmove:function(e){
+
+                },
+                touchend:function(e){
+                    _self.touch.NewY = e.originalEvent.changedTouches[0].pageY;
+                    _self.touch.addY = _self.touch.NewY - _self.touch.StartY;
+                    if(_self.touch.addY<-30){
+                        _self.pvip2leave();
+                        _self.pact_mask();
+                        _self.pact();
+
+                    }
+                }
+            });
+            /////////vip2//////////
+
+            /////////pmask//////////
+            $(".mask-point").on("touchend",function(){
+                _self.pact_maskleave();
+            });
+            /////////pmask//////////
+
+            /////////pact//////////
+            $(".go-btn").on("touchend",function(){
+               window.location.href = "game.html"
+            });
+            $(".chaxun-btn").on("touchend",function(){
+                
+                _self.pactleave();
+                _self.pchaxun();
+            });
+            $(".travel-list-btn").on("touchend",function(){
+                _self.pactleave();
+                _self.plist();
+            });
+            /////////pact//////////
+
             $(window).on("orientationchange",function(e){
                 if(window.orientation == 0 || window.orientation == 180 )
                 {
@@ -196,8 +475,17 @@
     };
     window.main = main;
 /*-----------------------------事件绑定--------------------------------*/
-}(window)
+}(window);
 $(function(){
+    var Main = new main();
+    Main.addEvent();
+    Main.start();
+
+    /////////测试输出/////////
+    window.test = Main;
+    console.log(test)
+    /////////测试输出/////////
+
     // var main = output.main,
     //     media = output.media,
     //     utils = output.utils;
@@ -205,11 +493,10 @@ $(function(){
     // utils.E(window,"touchstart",function(){media.MutedPlay("video");console.log(1)})
 });
 window.onload = function(){
-    var Main = new main();
-    Main.addEvent();
-    // Main.start();
-    window.test = Main;
-    console.log(test)
+
+
+
+
 };
 
 
