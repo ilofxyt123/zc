@@ -45,9 +45,10 @@ html,body{
         .txt-1{top:0;}
         .txt-2{top:52px;}
         .txt-3{top:101px;}
-    .bird{left:110px;top:280px;z-index:2;transform:translate(-270px,100px);}
+    .bird{left:122px;top:280px;z-index:2;transform:translate(-386px,100px);}
     .css-bird{width:149px;height:122px;background-image: url("../images/bird_small.png");background-repeat: no-repeat;background-size:auto;position: absolute;}
-    .env{left:203px;top:307px;}
+    .css-bird2{width:257px;height:189px;background-image: url("../images/bird.png");background-repeat: no-repeat;background-size:auto;position: absolute;}
+    /*.env{left:203px;top:307px;}*/
     .hand{top:424px;left:310px;}
     .point{width:34px;height:34px;position:absolute;left:313px;top:403px;z-index:4;}
         .out{width:34px;height:34px;border:solid 4px rgba(248,181,81,0.66);position:absolute;left:0;top:0;border-radius:50%;}

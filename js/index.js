@@ -178,8 +178,8 @@
 
         this.bird = {
             $obj:$(".bird"),
-            nowPosition:{x:-270,y:100},
-            startPosition:{x:-270,y:100},
+            nowPosition:{x:-386,y:100},
+            startPosition:{x:-386,y:100},
             endPosition:{x:0,y:0}
         };
 
@@ -417,9 +417,9 @@
                 $(".fadetxt img").addClass("ani-fadeIn");
                 var clock = setInterval(function(){
                     nowTime += 20;
-                    _self.bird.nowPosition.x = _self.easeOut(nowTime,_self.bird.startPosition.x,deltaX,1500);
-                    _self.bird.nowPosition.y = _self.easeOut(nowTime,_self.bird.startPosition.y,deltaY,1500);
-                    if(nowTime == 1500){
+                    _self.bird.nowPosition.x = _self.easeOut(nowTime,_self.bird.startPosition.x,deltaX,2500);
+                    _self.bird.nowPosition.y = _self.easeOut(nowTime,_self.bird.startPosition.y,deltaY,2500);
+                    if(nowTime == 2500){
                         console.log("动画结束");
                         $(".p1-point").fadeIn();
                         clearInterval(clock);

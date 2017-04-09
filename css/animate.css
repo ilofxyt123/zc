@@ -60,7 +60,7 @@
 
 .ani-birdfly{
     -webkit-animation-name:ani-birdfly;
-    -webkit-animation-duration: 0.2s;
+    -webkit-animation-duration: 0.5s;
     /*-webkit-animation-timing-function: linear;*/
     -webkit-animation-timing-function: steps(2,end);
     /*-webkit-animation-delay: 2s;*/
@@ -69,6 +69,45 @@
     -webkit-animation-play-state: running;
 
     animation-name:ani-birdfly;
+    animation-duration: 0.5s;
+    /*animation-timing-function: linear;*/
+    animation-timing-function: steps(2,end);
+    /*animation-delay: 2s;*/
+    animation-iteration-count: infinite;
+    animation-direction: normal;
+    animation-play-state: running;
+    /* Safari and Chrome: */
+}
+
+@keyframes ani-birdfly2 {
+    0%{
+        background-position:0 0;
+    }
+    100%{
+        background-position:-514px 0;
+    }
+}
+
+@-webkit-keyframes ani-birdfly2 {
+    0%{
+        background-position:0 0;
+    }
+    100%{
+        background-position:-514px 0;
+    }
+}
+
+.ani-birdfly2{
+    -webkit-animation-name:ani-birdfly2;
+    -webkit-animation-duration: 0.2s;
+    /*-webkit-animation-timing-function: linear;*/
+    -webkit-animation-timing-function: steps(2,end);
+    /*-webkit-animation-delay: 2s;*/
+    -webkit-animation-iteration-count: infinite;
+    -webkit-animation-direction: normal;
+    -webkit-animation-play-state: running;
+
+    animation-name:ani-birdfly2;
     animation-duration: 0.2s;
     /*animation-timing-function: linear;*/
     animation-timing-function: steps(2,end);
