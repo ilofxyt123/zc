@@ -84,8 +84,7 @@
                         }
                         if (haveLoaded == ImageURL.length && callback) {
                             setTimeout(function(){
-                                callback[0]();
-                                callback[1]();
+                                callback();
                             }, 500);
                         }
                     };
@@ -142,46 +141,183 @@
     };
     a.output = {main:Main,media:Media,utils:Utils};
 
-    var main = function(){
-        this.isEnd;//活动结束标志
-        this.havePay;//付款标记,也是参与活动的标志
-        this.isVip;//会员标记
-        this.guanzhu;//关注标记
-        this.FromTuiSong;
+    var game = function(){
+        this.nowPeople = parseInt($(".now-people").html());
 
-        this.picUrl = "images/";//图片路径
-        this.ImageList = [
-            this.picUrl+"phone.png",
-            this.picUrl+"weile.png"
-        ];
+        this.touch ={
+            ScrollObj:undefined,
+            isScroll:false,
+            limit:0,
+            overlimit:false,
+            StartY:0,
+            NewY:0,
+            addY:0,
+            scrollY:0
+        };
+
+        this.bgm ={
+            obj:document.getElementById("bgm"),
+            isPlay:false,
+            button:$(".music-btn")
+        };
+
+        this.gameData = {
+            $stampContainer : $(".stampList"),
+            stampappend:'<img src="images/p4_pic04.png" class="stamp-staic stamp-move stamp-touch">',
+            $goodContainer : $(".good"),
+            goodappend:'<img src="images/1.png" class="ani-good">',
+            nowTime : 10,
+            score : 0,
+            $scoreContainer : $(".game-score"),
+            gameover:false
+        };
+
         this.init();
     };
-    main.prototype = {
+    game.prototype = {
         init:function(){
-            this.isEnd = $("#is_end").val();
-            this.havePay = $("#havePay").val();
-            this.isVip = $("#is_vip").val();
-            this.guanzhu = $("#have_guanzhu").val();
-            this.FromTuiSong = $("#FromTuiSong").val();
-
-            ///////////////////套后台后可删除///////////////////
-            this.isEnd = !!Number(this.isEnd);
-            this.havePay = !!Number(this.havePay);
-            this.isVip = !!Number(this.isVip);
-            this.guanzhu = !!Number(this.guanzhu);
-            this.FromTuiSong = !!Number(this.FromTuiSong);
-            ///////////////////套后台后可删除///////////////////
+            /////////////处理参与活动页面///////////////
+            var percent = this.nowPeople/278;
+            $(".progress-bar").css("transform","scaleX("+percent+")");
+            /////////////处理参与活动页面///////////////
+        },
+        playbgm:function(){
+            this.bgm.obj.play();
+            this.bgm.button.addClass("ani-bgmRotate").removeClass("ani-bgmPause");
+            this.bgm.isPlay = true;
+        },
+        pausebgm:function(){
+            this.bgm.obj.pause();
+            this.bgm.button.addClass("ani-bgmPause");
+            this.bgm.isPlay = false;
         },
         start:function(){
-            Utils.preloadImage(this.ImageList,[this.loadleave,this.p1]);
+
         },
-        p1:function(){
-            $(".P1").fadeIn();
+        pgameleave:function(){
+            $(".P_game").fadeOut();
+        },
+        pgameresult:function(){
+            $(".P_game_result").fadeIn();
+        },
+        pgamemaskleave:function(){
+            $(".P_gameMask").addClass("ani-fadeOut");
         },
         loadleave:function(){
             $(".P_loading").fadeOut();
         },
+        gameStart:function(){
+            var nowTime = 10,
+                $time = $(".sec"),
+                _self = this;
+            var clock = setInterval(function(){
+                if(nowTime == 0){
+                    $(".stampBox").off("touchstart touchmove touchend");
+                    $(".stamp-result").html(_self.gameData.score);
+                    console.log("游戏结束")
+                    setTimeout(function(){
+                        _self.pgameleave();
+                        _self.pgameresult();
+                    },1000);
+                    clearInterval(clock);
+                    return;
+                }
+                nowTime -= 1;
+                $time.html(nowTime);
+            },1000)
+        },
+        pchaxun:function(){
+            $(".P_chaxun").fadeIn();
+        },
+        pchaxunleave:function(){
+            $(".P_chaxun").fadeOut();
+        },
+        plist:function(){
+            $(".P_List").fadeIn();
+        },
+        plistleave:function(){
+            $(".P_List").fadeOut();
+        },
+        paddress:function(){
+            $(".P_Address").fadeIn();
+        },
+        paddressleave:function(){
+            $(".P_Address").fadeOut();
+        },
+        pshare:function(){
+            $(".P_share").fadeIn();
+        },
         addEvent:function(){
+            var _self = this;
+
+            $(document).on("webkitAnimationEnd",function(e){
+                var animationName = e.originalEvent.animationName,
+                    $dom = $(e.target);
+                switch(animationName){
+                    case "ani-fadeOut":
+                        $dom.addClass("none").removeClass("ani-fadeOut");
+                        break;
+                    case "ani-fadeIn":
+                        $dom.removeClass("none").removeClass("opacity ani-fadeIn");
+                        break;
+                }
+                animationName = null;
+                $dom = null;
+            });
+            $(".P_gameMask").on("webkitAnimationEnd",function(){
+                _self.gameStart();
+            });
+            $(".stampBox").on({
+                touchstart:function(e){
+                    _self.touch.StartY = e.originalEvent.changedTouches[0].pageY;
+                    _self.touch.NewY = e.originalEvent.changedTouches[0].pageY;
+                },
+                touchmove:function(e){
+
+                },
+                touchend:function(e){
+                    _self.touch.NewY = e.originalEvent.changedTouches[0].pageY;
+                    _self.touch.addY = _self.touch.NewY - _self.touch.StartY;
+                    if(_self.touch.addY<-30){
+                        _self.gameData.$stampContainer.append(_self.gameData.stampappend);
+                        _self.gameData.$goodContainer.append(_self.gameData.goodappend);
+                        _self.gameData.score+=1;
+                        _self.gameData.$scoreContainer.html(_self.gameData.score);
+                    }
+                }
+            });
+
+            $(".P_gameMask").on("touchend",function(){
+                _self.pgamemaskleave();
+            });
+            $(".game-result-btn1").on("touchend",function(){
+                _self.paddress();
+            });
+            $(".game-result-btn2").on("touchend",function(){
+                _self.pshare();
+            });
+            $(".add-xx").on("touchend",function(){
+                _self.paddressleave();
+            });
+            $(".rule-btn").on("touchend",function(){//打开规则
+                $(".P_rule").fadeIn();
+            });
+            $(".P_share").on("touchend",function(){//打开分享
+                $(this).fadeOut();
+            });
+            $(".music-btn").on("touchend",function(){
+                if(_self.bgm.isPlay){
+                    _self.bgm.isPlay = false;
+                    _self.pausebgm();
+                }
+                else{
+                    _self.bgm.isPlay = true;
+                    _self.playbgm();
+                }
+            });
+            $(".rulexx").on("touchend",function(){//关闭规则
+                $(".P_rule").fadeOut();
+            });
             $(window).on("orientationchange",function(e){
                 if(window.orientation == 0 || window.orientation == 180 )
                 {
@@ -192,11 +328,12 @@
                     $(".hp").show();
                 }
             });
+            document.body.ontouchmove = function(e){e.preventDefault();}
         },
     };
-    window.main = main;
+    window.game = game;
 /*-----------------------------事件绑定--------------------------------*/
-}(window)
+}(window);
 $(function(){
     // var main = output.main,
     //     media = output.media,
@@ -205,11 +342,14 @@ $(function(){
     // utils.E(window,"touchstart",function(){media.MutedPlay("video");console.log(1)})
 });
 window.onload = function(){
-    var Main = new main();
-    Main.addEvent();
-    // Main.start();
-    window.test = Main;
-    console.log(test)
+    var Game = new game();
+    Game.addEvent();
+
+    /////////测试输出/////////
+    window.test = Game;
+    console.log(test);
+    /////////测试输出/////////
 };
+
 
 

@@ -147,9 +147,16 @@
         this.isVip;//会员标记
         this.guanzhu;//关注标记
         this.FromTuiSong;//从推送进入页面
-        this.prizeType;//奖品类型，0代表未参与过活动，1代表188新品券，2代表4999旅行
+        this.prizeType;//奖品类型，0代表未参与过活动，1代表4999旅行，2代表188新品券
+        this.isOpen4999;//是否已经开启4999大奖
+        this.nowPeople;
+        this.clockSwitch = undefined;//定时器句柄
 
-        this.touch={
+        this.router;//管理页面跳转
+
+        this.pages = ["pact",""];
+
+        this.touch ={
             ScrollObj:undefined,
             isScroll:false,
             limit:0,
@@ -158,6 +165,22 @@
             NewY:0,
             addY:0,
             scrollY:0,
+            touchAllow:true
+        };
+
+
+
+        this.bgm ={
+            obj:document.getElementById("bgm"),
+            isPlay:false,
+            button:$(".music-btn")
+        };
+
+        this.bird = {
+            $obj:$(".bird"),
+            nowPosition:{x:-270,y:100},
+            startPosition:{x:-270,y:100},
+            endPosition:{x:0,y:0}
         };
 
         this.picUrl = "images/";//图片路径
@@ -288,12 +311,15 @@
     };
     main.prototype = {
         init:function(){
-            this.isEnd = $("#is_end").val();
-            this.havePay = $("#havePay").val();
-            this.isVip = $("#is_vip").val();
-            this.guanzhu = $("#have_guanzhu").val();
-            this.FromTuiSong = $("#FromTuiSong").val();
-            this.prizeType = $("#FromTuiSong").val();
+            this.isEnd = $("#is_end").val();//boolean
+            this.havePay = $("#havePay").val();//boolean
+            this.isVip = $("#is_vip").val();//boolean
+            this.guanzhu = $("#have_guanzhu").val();//boolean
+            this.FromTuiSong = $("#FromTuiSong").val();//boolean
+            this.prizeType = $("#prizeType").val();//number
+            this.isOpen4999 = $("#isOpen4999").val();//boolean
+            this.nowPeople = $(".now-people").html();//number
+
 
             ///////////////////套后台后可删除///////////////////
             this.isEnd = !!Number(this.isEnd);
@@ -301,13 +327,49 @@
             this.isVip = !!Number(this.isVip);
             this.guanzhu = !!Number(this.guanzhu);
             this.FromTuiSong = !!Number(this.FromTuiSong);
+            this.prizeType = parseInt(this.prizeType);
+            this.isOpen4999 = !!Number(this.isOpen4999);
+            this.nowPeople = parseInt(this.nowPeople);
             ///////////////////套后台后可删除///////////////////
+
+            ///////////////处理查询页面///////////////
+            switch(this.prizeType){
+                case 0:
+                    break;
+                case 1://4999大奖
+                    $(".prize-result1").removeClass("none");
+                    break;
+                case 2://188小奖
+                    if(this.isOpen4999){
+                        $(".isEnd4999").removeClass("none");
+                    }
+                    else{
+                        $(".no4999").removeClass("none");
+                    }
+                    $(".prize-result2").removeClass("none");
+                    break;
+            };
+            ///////////////处理查询页面///////////////
+
+            ///////////////处理参与活动页面///////////////
+            var percent = this.nowPeople/278;
+            $(".progress-bar").css("transform","scaleX("+percent+")");
+            ///////////////处理参与活动页面///////////////
+        },
+        playbgm:function(){
+            this.bgm.obj.play();
+            this.bgm.button.addClass("ani-bgmRotate").removeClass("ani-bgmPause");
+            this.bgm.isPlay = true;
+        },
+        pausebgm:function(){
+            this.bgm.obj.pause();
+            this.bgm.button.addClass("ani-bgmPause");
+            this.bgm.isPlay = false;
         },
         start:function(){
             Utils.preloadImage(this.ImageList,this.startCallback.bind(this),true);
         },
         startCallback:function(){
-
             ///////////////活动结束///////////////
             if(this.isEnd){
                 if(this.havePay){//已经参与过活动
@@ -330,6 +392,7 @@
             }
             if(this.havePay){//已经支付过
                 $(".has").removeClass("none");
+                this.pact_mask();
                 this.pact();
                 return;
             }
@@ -344,7 +407,26 @@
             $(".P_loading").fadeOut();
         },
         p1:function(){
-            $(".P1").fadeIn();
+            var nowTime = 0,
+                _self = this,
+                deltaX = this.bird.endPosition.x - this.bird.startPosition.x,
+                deltaY = this.bird.endPosition.y - this.bird.startPosition.y;
+            $(".P1").fadeIn(function(){
+                $(".fadetxt img").addClass("ani-fadeIn");
+                var clock = setInterval(function(){
+                    nowTime += 20;
+                    _self.bird.nowPosition.x = _self.easeOut(nowTime,_self.bird.startPosition.x,deltaX,1500);
+                    _self.bird.nowPosition.y = _self.easeOut(nowTime,_self.bird.startPosition.y,deltaY,1500);
+                    if(nowTime == 1500){
+                        console.log("动画结束");
+                        $(".p1-point").fadeIn();
+                        clearInterval(clock);
+                        return;
+                    }
+                    _self.bird.$obj.css("transform","translate("+_self.bird.nowPosition.x+"px,"+_self.bird.nowPosition.y+"px)");
+                },20)
+            });
+
         },
         p1leave:function(){
             $(".P1").fadeOut();
@@ -375,7 +457,11 @@
             $(".P_mask").fadeIn();
         },
         pact_maskleave:function(){
-            $(".P_mask").fadeOut();
+            $(".P_mask").fadeOut(function(){
+
+                $(".hd-left-scale").addClass("ani-toBig1");
+                $(".hd-right-scale").addClass("ani-toBig2");
+            });
         },
         pact:function(){
             $(".P_active").fadeIn();
@@ -389,6 +475,18 @@
         plistleave:function(){
             $(".P_List").fadeOut();
         },
+        pfill:function(){
+            $(".P_fill").fadeIn();
+        },
+        pfillleave:function(){
+            $(".P_fill").fadeOut();
+        },
+        paddress:function(){
+            $(".P_Address").fadeIn();
+        },
+        paddressleave:function(){
+            $(".P_Address").fadeOut();
+        },
         pend_pay:function(){
             $(".P_end-Pay").fadeIn();
         },
@@ -398,23 +496,37 @@
         pcode:function(){
             $(".P_code").fadeIn();
         },
+        pshare:function(){
+            $(".P_share").fadeIn();
+        },
         addEvent:function(){
             var _self = this;
             /////////p1//////////
             $(".p1-point").on("touchend",function(){
-                _self.p1leave();
-                if(_self.isVip){
-                    _self.pvip1();
-                    return;
-                }
-                _self.pnotvip();
+                $(".p1-hand").addClass("ani-hand");
             });
+            $(".hand").on("webkitAnimationEnd",function(){
+                setTimeout(function(){
+                    _self.p1leave();
+                    if(_self.isVip){
+                        _self.pvip1();
+                        return;
+                    }
+                    _self.pnotvip();
+                },500);
+            });
+
             /////////p1//////////
 
             /////////vip1//////////
             $(".vip-point").on("touchend",function(){
-                _self.pvip1leave();
-                _self.pvip2();
+                $(".vipHand").addClass("ani-hand2");
+            });
+            $(".vipHand").on("webkitAnimationEnd",function(){
+                setTimeout(function(){
+                    _self.pvip1leave();
+                    _self.pvip2();
+                },500)
             });
             /////////vip1//////////
 
@@ -434,7 +546,9 @@
                         _self.pvip2leave();
                         _self.pact_mask();
                         _self.pact();
-
+                        _self.clockSwitch = setTimeout(function(){
+                            _self.pact_maskleave();
+                        },3000)
                     }
                 }
             });
@@ -442,7 +556,10 @@
 
             /////////pmask//////////
             $(".mask-point").on("touchend",function(){
+                if(!_self.touch.touchAllow){return;};
+                clearTimeout(_self.clockSwitch);
                 _self.pact_maskleave();
+
             });
             /////////pmask//////////
 
@@ -451,7 +568,7 @@
                window.location.href = "game.html"
             });
             $(".chaxun-btn").on("touchend",function(){
-                
+                _self.router = _self.pages[0]
                 _self.pactleave();
                 _self.pchaxun();
             });
@@ -461,6 +578,94 @@
             });
             /////////pact//////////
 
+            /////////pchaxun//////////
+            $(".back").on("touchend",function(){
+                _self.pchaxunleave();
+                switch(_self.router){
+                    case "pact":
+                        _self.pact()
+                        break;
+                }
+            });
+
+            $(".chaxun-result1-btn1").on("touchend",function(){
+
+                _self.pfill();
+                _self.pchaxunleave();
+            });
+            $(".chaxun-result1-btn2").on("touchend",function(){
+                _self.paddress();
+            });
+            $(".chaxun-result1-btn3").on("touchend",function(){
+                _self.pshare();
+            });
+
+            $(".chaxun-result2-btn1").on("touchend",function(){
+                _self.paddress();
+            });
+            $(".chaxun-result2-btn2").on("touchend",function(){
+                _self.pshare();
+            });
+            /////////pchaxun//////////
+
+            /////////paddress//////////
+            $(".add-xx").on("touchend",function(){
+                _self.paddressleave();
+            });
+            /////////paddress//////////
+
+            /////////plist//////////
+            $(".listxx").on("touchend",function(){
+                _self.plistleave();
+                _self.pact();
+            });
+            /////////plist//////////
+            $(document).on("webkitAnimationEnd",function(e){//试点技术，暂未启用，用以优化安卓fadeIn和fadeOut
+                var animationName = e.originalEvent.animationName,
+                    $dom = $(e.target);
+                switch(animationName){
+                    case "ani-fadeOut":
+                        $dom.addClass("none").removeClass("ani-fadeOut");
+                        break;
+                    case "ani-fadeIn":
+                        $dom.removeClass("none").removeClass("opacity ani-fadeIn");
+                        break;
+                }
+                animationName = null;
+                $dom = null;
+            });
+            $(".rule-btn").on("touchend",function(){//打开规则
+                $(".P_rule").fadeIn();
+            });
+            $(".P_share").on("touchend",function(){//打开分享
+                $(this).fadeOut();
+            });
+            $(".rulexx").on("touchend",function(){//关闭规则
+                $(".P_rule").fadeOut();
+            });
+            $(".fill-submit-btn").on("touchend",function(){
+                var phoneNumber= $("#phone").val(),
+                    name = $("#name").val();
+                if(name == ""){
+                    alert("请输入姓名");
+                    return;
+                }
+                if(!(/^1(3|4|5|7|8)\d{9}$/.test(phoneNumber))){
+                    alert("请输入正确的手机号");//手机号错误提示框
+                    return;
+                }
+                window.location.href = "index.html";
+            });//提交信息
+            $(".music-btn").on("touchend",function(){
+                if(_self.bgm.isPlay){
+                    _self.bgm.isPlay = false;
+                    _self.pausebgm();
+                }
+                else{
+                    _self.bgm.isPlay = true;
+                    _self.playbgm();
+                }
+            });
             $(window).on("orientationchange",function(e){
                 if(window.orientation == 0 || window.orientation == 180 )
                 {
@@ -471,6 +676,13 @@
                     $(".hp").show();
                 }
             });
+            document.body.ontouchmove = function(e){e.preventDefault();}
+        },
+        easeInOut:function(nowTime,startPosition,delta,duration){
+            return 1 > (nowTime /= duration / 2) ? delta / 2 * nowTime * nowTime + startPosition : -delta / 2 * (--nowTime * (nowTime - 2) - 1) + startPosition
+        },
+        easeOut:function(nowTime,startPosition,delta,duration){
+            return -delta*(nowTime/=duration)*(nowTime-2)+startPosition;
         },
     };
     window.main = main;
@@ -483,7 +695,7 @@ $(function(){
 
     /////////测试输出/////////
     window.test = Main;
-    console.log(test)
+    console.log(test);
     /////////测试输出/////////
 
     // var main = output.main,
@@ -492,11 +704,6 @@ $(function(){
     // media.WxMediaInit();
     // utils.E(window,"touchstart",function(){media.MutedPlay("video");console.log(1)})
 });
-window.onload = function(){
 
-
-
-
-};
 
 

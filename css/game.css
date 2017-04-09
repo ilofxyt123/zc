@@ -1,0 +1,95 @@
+html,body{
+    width:640px;
+    height:100%;
+    overflow: hidden;
+    position: relative;
+    margin:0 auto;
+    background-color:white;
+}
+
+.hp{
+    background: #000;
+    z-index: 999;
+    display: none;
+}
+.hp_box{
+    width:40%;
+    position: absolute;
+    left:30%;
+    height:100%;
+}
+.phone {
+    width:50%;
+    position:absolute;
+    left:50%;
+    margin-left:-25%;
+    top:33%;
+
+}
+.hp_tip{
+    width:100%;
+    position:absolute;
+    top:70%;
+}
+
+
+.P_bg{z-index:1;}
+    .bg-pic{left:0;top:0;}
+    .bg1-bottom{width:640px;height:210px;position: absolute;top:800px;left:0;}
+    .bg2-bottom{width:640px;height:210px;position: absolute;top:842px;left:0;}
+        .bg-left-leaf1{top:0;left:-15px;}
+        .bg-left-leaf2{top:112px;left:135px;}
+        .bg-right-leaf1{top:40px;right:150px;}
+        .bg-right-leaf2{top:67px;right:70px;}
+    .bg1-top{right:-44px;top:30px;}
+.top{height:44px;width:640px;position:absolute;top:16px;z-index:99;}
+    .logo{top:5px;left:30px;}
+    .music-btn{top:0;right:20px;}
+    .rule-btn{top:0;right:80px;}
+
+.P_game{}
+    .gameScoreBox{width:140px;height:90px;position: absolute;left:50px;top:116px;}
+        .game-score-bg{z-index:-1;left:0;top:0;}
+        .sec{position: absolute;font-size:26px;width:60px;height:30px;line-height:30px;left:66px;top:-1px;text-align: center;}
+        .game-score{position: absolute;font-size:26px;width:60px;height:30px;line-height:30px;left:68px;top:62px;text-align: center;}
+    .stampBox{width:350px;height:240px;position: absolute;top:806px;left:50%;margin-left:-175px;}
+        .stampList{width:227px;height:325px;position: absolute;left:53px;bottom:46px;}
+            .stamp-staic{position: absolute;left:0;top:0;}
+        .stamp-bottom{position: absolute;left:0;top:0;z-index: -1;}
+    .good{width:50px;height:50px;position: absolute;top:530px;left:376px;}
+
+.P_game_result{}
+    .game-result-top{left:50%;margin-left:-77px;top:-57px;}
+    .game-result-txt{position:absolute;width:392px;height:133px;top:140px;left:50%;margin-left:-196px;}
+        .stamp-result{position: absolute;width:32px;height:22px;line-height:22px;font-size:22px;left:124px;top:66px;text-align: center;}
+    .game-result-188{top:303px;left:50%;margin-left:-150px;}
+    .game-result-btn1{top:505px;left:50%;margin-left:-168px;}
+    .game-result-btn2{top:588px;left:50%;margin-left:-168px;}
+    .game-result-Box{width:313px;height:130px;position: absolute;top:718px;left:50%;margin-left:-157px;}
+        .bar-top-txt1{width:269px;height:22px;position: absolute;top:0;left:50%;margin-left:-135px;}
+            .bar-top-txt1-number{position:absolute;width:40px;height:22px;line-height:22px;font-size:24px;left:214px;top:0;}
+        .progress-bg{width:313px;height:12px;background-image: url("../images/p3_pic02.png");background-repeat:no-repeat;position: absolute;left:0;top:36px;overflow: hidden;}
+            .progress-bar{width:100%;left:0;height:12px;transform:scaleX(0);transform-origin:left center;}
+        .people{position:absolute;width:120px;height:22px;left:50%;margin-left:-60px;top:62px;}
+            .now-people{position:absolute;width:44px;height:22px;left:0;text-align: center;font-size:24px;line-height:22px;}
+            .people img{right:0;top:0;}
+        .game-result-total{left:50%;margin-left:-103px;bottom:0;}
+    .game-result-detail{top:896px;left:50%;margin-left:-48px;}
+
+.P_gameMask{background-color:rgba(0,0,0,0.8);z-index:100;}
+    .gameMask-txt{top:174px;left:50%;margin-left:-233px;}
+
+/*.P_rule{z-index:100;}*/
+    /*.rule-mask{position:absolute;width:100%;height:100%;background-color: rgba(0,0,0,0.8);}*/
+        /*.rulexx{top:50px;right:70px;}*/
+        /*.rule{top:142px;left:50%;margin-left:-253px;}*/
+
+/*.P_share{z-index:100;background-color:rgba(0,0,0,0.8);}*/
+    /*.share-txt{top:120px;left:280px;}*/
+    /*.share-bird{top:25px;right:50px;}*/
+.selectBox{width:462px;height:150px;position: absolute;left:50%;margin-left:-231px;}
+        .select-ban{width:100%;height:100%;position: absolute;left:0;top:0;z-index:50;}
+        .select1{position:absolute;top:0;width:216px;height:51px;border:none;outline:none;background-image:url("../images/p2_pic11.png");background-repeat:no-repeat;line-height:54px;font-size:26px;text-align:center;background-color:rgba(0,0,0,0);-webkit-appearance:none;padding-left:36px;}
+        .province{left:0;}
+        .city{right:0;}
+        .address{bottom:0;position:absolute;width:462px;height:51px;border:none;outline:none;background-image:url("../images/p2_pic12.png");background-repeat:no-repeat;line-height:54px;font-size:26px;text-align:center;background-color:rgba(0,0,0,0);-webkit-appearance:none;padding-left:36px;}
