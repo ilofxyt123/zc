@@ -45,7 +45,8 @@ html,body{
         .txt-1{top:0;}
         .txt-2{top:52px;}
         .txt-3{top:101px;}
-    .bird{width:149px;height:122px;background-image: url("../images/bird_small.png");background-size:auto;position: absolute;left:110px;top:280px;z-index:2;background-repeat: no-repeat;transform:translate(-270px,100px);}
+    .bird{left:110px;top:280px;z-index:2;transform:translate(-270px,100px);}
+    .css-bird{width:149px;height:122px;background-image: url("../images/bird_small.png");background-repeat: no-repeat;background-size:auto;position: absolute;}
     .env{left:203px;top:307px;}
     .hand{top:424px;left:310px;}
     .point{width:34px;height:34px;position:absolute;left:313px;top:403px;z-index:4;}
@@ -55,7 +56,7 @@ html,body{
     .p1-1{right:-44px;top:30px;}
     .p1-2{left:34px;top:243px;}
     .p1-3{right:44px;top:253px;}
-    .p1-bottom{width:640px;height:376px;position:absolute;top:630px;perspective:800px;}
+    .p1-bottom{width:640px;height:376px;position:absolute;top:630px;perspective:800px;overflow:hidden;}
         .bottom-move1{z-index:-2;top:90px;/*transform:translateX(-500px);*/}
         .bottom-move2{z-index:-1;top:104px;/*transform:translateX(-368px);*/}
         .grass{top:213px;left:0;z-index:5;}
@@ -95,7 +96,8 @@ html,body{
 .P_Vip2{}
     .contentBox{width:533px;height:797px;position: absolute;top:76px;left:50%;margin-left:-267px;}
     .vip2-1{}
-        .vip2-bird{left:85px;top:-25px;}
+        /*.vip2-bird{left:85px;top:-25px;}*/
+        .vip2-bird{left:85px;top:-25px;transform:scale(0.64,0.64);transform-origin:left top;}
         .vip2-flower{bottom:-30px;right:16px;}
         .age{width:40px;height:23px;position:absolute;left:214px;top:320px;line-height:23px;text-align: center;}
     .arrow_down{left:50%;margin-left:-22px;top:916px;}

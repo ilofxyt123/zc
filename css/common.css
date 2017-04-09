@@ -141,8 +141,8 @@ a, button, input {
 
 .P_bg{z-index:1;}
     .bg-pic{left:0;top:0;}
-    .bg1-bottom{width:640px;height:210px;position: absolute;top:800px;left:0;}
-    .bg2-bottom{width:640px;height:210px;position: absolute;top:842px;left:0;}
+    .bg1-bottom{width:640px;height:210px;position: absolute;top:800px;left:0;perspective:800px;overflow:hidden;}
+    .bg2-bottom{width:640px;height:210px;position: absolute;top:842px;left:0;perspective:800px;overflow:hidden;}
         .bg-left-leaf1{top:0;left:-15px;}
         .bg-left-leaf2{top:112px;left:135px;}
         .bg-right-leaf1{top:40px;right:150px;}
