@@ -70,6 +70,7 @@
             },20)
         }
     };
+    Media.WxMediaInit();
     var Utils = new function(){
         this.preloadImage = function(ImageURL,callback,realLoading){
             var rd = realLoading||false;
@@ -369,6 +370,7 @@
             this.bgm.isPlay = false;
         },
         start:function(){
+            this.playbgm();
             Utils.preloadImage(this.ImageList,this.startCallback.bind(this),true);
         },
         startCallback:function(){

@@ -170,14 +170,8 @@
     0%{
         transform:translateX(0);
     }
-    50%{
-        transform:translateX(-2030px);
-    }
-    50.1%{
-        transform:translateX(640px);
-    }
     100%{
-        transform:translateX(0);
+        transform:translateX(-2030px);
     }
 }
 
@@ -185,14 +179,8 @@
     0%{
         transform:translateX(0);
     }
-    50%{
-        transform:translateX(-2030px);
-    }
-    50.1%{
-        transform:translateX(640px);
-    }
     100%{
-        transform:translateX(0);
+        transform:translateX(-2030px);
     }
 }
 .ani-move1{
@@ -206,14 +194,8 @@
     0%{
         transform:translateX(0);
     }
-    50%{
-        transform:translateX(-1281px);
-    }
-    50.1%{
-        transform:translateX(640px);
-    }
     100%{
-        transform:translateX(0);
+        transform:translateX(-1281px);
     }
 }
 
@@ -221,14 +203,8 @@
     0%{
         transform:translateX(0);
     }
-    50%{
-        transform:translateX(-1281px);
-    }
-    50.1%{
-        transform:translateX(640px);
-    }
     100%{
-        transform:translateX(0);
+        transform:translateX(-1281px);
     }
 }
 .ani-move2{
@@ -518,4 +494,33 @@
     -moz-animation:ani-fadeIn 0.5s linear 0s 1 normal forwards running;
     -o-animation:ani-fadeIn 0.5s linear 0s 1 normal forwards running;
     animation:ani-fadeIn 0.5s linear 0s 1 normal forwards running;
+}
+
+
+@-webkit-keyframes ani-bgmRotate {
+    0%{
+        -webkit-transform:rotate(0deg);
+    }
+    100% {
+        -webkit-transform:rotate(360deg);
+    }
+}
+@keyframes ani-bgmRotate {
+    0%{
+        transform:rotate(0deg);
+    }
+    100% {
+        transform:rotate(360deg);
+    }
+}
+
+.ani-bgmRotate{
+    -webkit-animation:ani-bgmRotate 1s linear 0s infinite normal forwards running;
+    -moz-animation:ani-bgmRotate 1s linear 0s infinite normal forwards running;
+    -o-animation:ani-bgmRotate 1s linear 0s infinite normal forwards running;
+    animation:ani-bgmRotate 1s linear 0s infinite normal forwards running;
+}
+.ani-bgmRotate.ani-bgmPause{
+    animation-play-state:paused;
+    -webkit-animation-play-state:paused;
 }

@@ -144,6 +144,8 @@
     var game = function(){
         this.nowPeople = parseInt($(".now-people").html());
 
+        this.clockSwitch = undefined;
+
         this.touch ={
             ScrollObj:undefined,
             isScroll:false,
@@ -192,7 +194,9 @@
             this.bgm.isPlay = false;
         },
         start:function(){
-
+            this.clockSwitch = setTimeout(function(){
+                                    $(".P_gameMask").addClass("ani-fadeOut");
+                                },3000);
         },
         pgameleave:function(){
             $(".P_game").fadeOut();
@@ -265,6 +269,7 @@
                 $dom = null;
             });
             $(".P_gameMask").on("webkitAnimationEnd",function(){
+                clearTimeout(_self.clockSwitch);
                 _self.gameStart();
             });
             $(".stampBox").on({
@@ -344,6 +349,8 @@ $(function(){
 window.onload = function(){
     var Game = new game();
     Game.addEvent();
+    Game.start();
+
 
     /////////测试输出/////////
     window.test = Game;

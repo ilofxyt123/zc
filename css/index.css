@@ -57,9 +57,9 @@ html,body{
     .p1-1{right:-44px;top:30px;}
     .p1-2{left:34px;top:243px;}
     .p1-3{right:44px;top:253px;}
-    .p1-bottom{width:640px;height:376px;position:absolute;top:630px;perspective:800px;overflow:hidden;}
-        .bottom-move1{z-index:-2;top:90px;/*transform:translateX(-500px);*/}
-        .bottom-move2{z-index:-1;top:104px;/*transform:translateX(-368px);*/}
+    .p1-bottom{width:640px;height:410px;position:absolute;top:630px;perspective:800px;overflow:hidden;}
+        .bottom-move1{z-index:1;top:90px;left:640px;}
+        .bottom-move2{z-index:2;top:104px;left:640px;}
         .grass{top:213px;left:0;z-index:5;}
         .left-leaf{top:46px;left:-42px;z-index:10;}
         .left-tower1{top:53px;left:43px;z-index:3;}
