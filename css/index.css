@@ -50,14 +50,16 @@ html,body{
     .css-bird2{width:257px;height:189px;background-image: url("../images/bird.png");background-repeat: no-repeat;background-size:auto;position: absolute;}
     /*.env{left:203px;top:307px;}*/
     .hand{top:424px;left:310px;}
+    .p1-point-clickArea{width:100px;height:100px;position: absolute;left:50%;margin-left:-43px;top:370px;z-index:10;}
     .point{width:34px;height:34px;position:absolute;left:313px;top:403px;z-index:4;}
         .out{width:34px;height:34px;border:solid 4px rgba(248,181,81,0.66);position:absolute;left:0;top:0;border-radius:50%;}
         .out-change{width:34px;height:34px;border:solid 4px rgba(248,181,81,0.66);position:absolute;left:0;top:0;border-radius:50%;}
         .in{position: absolute;width:18px;height:18px;left:8px;top:8px;border-radius:50%;background-color:#f8b551;}
-    .p1-1{right:-44px;top:30px;}
+    .p1-1{position:absolute;width:134px;height:184px;right:-44px;top:30px;perspective:800px;}
+        .rotateImg{transform:rotateX(-15deg) rotateY(-15deg);}
     .p1-2{left:34px;top:243px;}
     .p1-3{right:44px;top:253px;}
-    .p1-bottom{width:640px;height:410px;position:absolute;top:630px;perspective:800px;overflow:hidden;}
+    .p1-bottom{width:640px;height:410px;position:absolute;top:630px;perspective:800px;}
         .bottom-move1{z-index:1;top:90px;left:640px;}
         .bottom-move2{z-index:2;top:104px;left:640px;}
         .grass{top:213px;left:0;z-index:5;}

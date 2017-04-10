@@ -137,14 +137,11 @@
     }
 }
 .ani-drop {
-    -webkit-animation:ani-drop 1s steps(3,end) 0s 1 normal forwards running;
-    -moz-animation:ani-drop 1s steps(3,end) 0s 1 normal forwards running;
-    -ms-animation:ani-drop 1s steps(3,end) 0s 1 normal forwards running;
-    -o-animation:ani-drop 1s steps(3,end) 0s 1 normal forwards running;
-    animation:ani-drop 1s steps(3,end) 0s 1 normal forwards running;
+    -webkit-animation:ani-drop 1s steps(3,end)  1  forwards ;
+    animation:ani-drop 1s steps(3,end)  1  forwards ;
 }
 
-@-webkit-keyframes ani-tunbig {
+@-webkit-keyframes anitunbig {
     0% {
         -webkit-transform: scale(1);
         -webkit-transform-origin: center center;
@@ -157,12 +154,9 @@
     }
 }
 
-.ani-tunbig {
-    -webkit-animation:ani-tunbig 1s linear 0s infinite normal forwards running;
-    -moz-animation:ani-tunbig 1s linear 0s infinite normal forwards running;
-    -ms-animation:ani-tunbig 1s linear 0s infinite normal forwards running;
-    -o-animation:ani-tunbig 1s linear 0s infinite normal forwards running;
-    animation:ani-tunbig 1s linear 0s infinite normal forwards running;
+.anitunbig {
+    -webkit-animation:anitunbig 1s linear 0s infinite  forwards;
+    animation:anitunbig 1s linear 0s infinite  forwards;
 }
 
 
@@ -184,10 +178,10 @@
     }
 }
 .ani-move1{
-    -webkit-animation:ani-move1 47.5s linear 5s infinite normal forwards running;
-    -moz-animation:ani-move1 47.5s linear 5s infinite normal forwards running;
-    -o-animation:ani-move1 47.5s linear 5s infinite normal forwards running;
-    animation:ani-move1 47.5s linear 5s infinite normal forwards running;
+    -webkit-animation:ani-move1 47.5s linear 5s infinite normal forwards;
+    -moz-animation:ani-move1 47.5s linear 5s infinite normal forwards;
+    -o-animation:ani-move1 47.5s linear 5s infinite normal forwards;
+    animation:ani-move1 47.5s linear 5s infinite normal forwards;
 }
 
 @keyframes ani-move2 {
@@ -208,10 +202,10 @@
     }
 }
 .ani-move2{
-    -webkit-animation:ani-move2 30s linear 0s infinite normal forwards running;
-    -moz-animation:ani-move2 30s linear 0s infinite normal forwards running;
-    -o-animation:ani-move2 30s linear 0s infinite normal forwards running;
-    animation:ani-move2 30s linear 0s infinite normal forwards running;
+    -webkit-animation:ani-move2 30s linear 0s infinite normal forwards;
+    -moz-animation:ani-move2 30s linear 0s infinite normal forwards;
+    -o-animation:ani-move2 30s linear 0s infinite normal forwards;
+    animation:ani-move2 30s linear 0s infinite normal forwards;
 }
 
 
@@ -236,10 +230,10 @@
 }
 
 .stamp-move{
-    -webkit-animation:stamp-move 0.5s linear 0s 1 normal forwards running;
-    -moz-animation:stamp-move 0.5s linear 0s 1 normal forwards running;
-    -o-animation:stamp-move 0.5s linear 0s 1 normal forwards running;
-    animation:stamp-move 0.5s linear 0s 1 normal forwards running;
+    -webkit-animation:stamp-move 0.5s linear 0s 1 normal forwards;
+    -moz-animation:stamp-move 0.5s linear 0s 1 normal forwards;
+    -o-animation:stamp-move 0.5s linear 0s 1 normal forwards;
+    animation:stamp-move 0.5s linear 0s 1 normal forwards;
 }
 
 @keyframes ani-good {
@@ -263,10 +257,10 @@
 }
 
 .ani-good{
-    -webkit-animation:ani-good 0.5s linear 0s 1 normal forwards running;
-    -moz-animation:ani-good 0.5s linear 0s 1 normal forwards running;
-    -o-animation:ani-good 0.5s linear 0s 1 normal forwards running;
-    animation:ani-good 0.5s linear 0s 1 normal forwards running;
+    -webkit-animation:ani-good 0.5s linear 0s 1 normal forwards;
+    -moz-animation:ani-good 0.5s linear 0s 1 normal forwards;
+    -o-animation:ani-good 0.5s linear 0s 1 normal forwards;
+    animation:ani-good 0.5s linear 0s 1 normal forwards;
 }
 
 @keyframes ani-hand {
@@ -288,10 +282,10 @@
 }
 
 .ani-hand{
-    -webkit-animation:ani-hand 1s ease-out 0s 1 normal forwards running;
-    -moz-animation:ani-hand 1s ease-out 0s 1 normal forwards running;
-    -o-animation:ani-hand 1s ease-out 0s 1 normal forwards running;
-    animation:ani-hand 1s ease-out 0s 1 normal forwards running;
+    -webkit-animation:ani-hand 1s ease-out 0s 1 normal forwards;
+    -moz-animation:ani-hand 1s ease-out 0s 1 normal forwards;
+    -o-animation:ani-hand 1s ease-out 0s 1 normal forwards;
+    animation:ani-hand 1s ease-out 0s 1 normal forwards;
 }
 
 
@@ -310,10 +304,10 @@
 }
 
 .ani-leaf1{
-    -webkit-animation:ani-leaf1 9s ease-in-out 0s infinite alternate forwards running;
-    -moz-animation:ani-leaf1 9s ease-in-out 0s infinite alternate forwards running;
-    -o-animation:ani-leaf1 9s ease-in-out 0s infinite alternate forwards running;
-    animation:ani-leaf1 9s ease-in-out 0s infinite alternate forwards running;
+    -webkit-animation:ani-leaf1 9s ease-in-out 0s infinite alternate forwards;
+    -moz-animation:ani-leaf1 9s ease-in-out 0s infinite alternate forwards;
+    -o-animation:ani-leaf1 9s ease-in-out 0s infinite alternate forwards;
+    animation:ani-leaf1 9s ease-in-out 0s infinite alternate forwards;
 }
 
 @keyframes ani-leaf2 {
@@ -331,10 +325,10 @@
 }
 
 .ani-leaf2{
-    -webkit-animation:ani-leaf2 9s ease-in-out 0s infinite alternate forwards running;
-    -moz-animation:ani-leaf2 9s ease-in-out 0s infinite alternate forwards running;
-    -o-animation:ani-leaf2 9s ease-in-out 0s infinite alternate forwards running;
-    animation:ani-leaf2 9s ease-in-out 0s infinite alternate forwards running;
+    -webkit-animation:ani-leaf2 9s ease-in-out 0s infinite alternate forwards;
+    -moz-animation:ani-leaf2 9s ease-in-out 0s infinite alternate forwards;
+    -o-animation:ani-leaf2 9s ease-in-out 0s infinite alternate forwards;
+    animation:ani-leaf2 9s ease-in-out 0s infinite alternate forwards;
 }
 
 @keyframes ani-leaf3 {
@@ -352,10 +346,10 @@
 }
 
 .ani-leaf3{
-    -webkit-animation:ani-leaf3 9s ease-in-out 0s infinite alternate forwards running;
-    -moz-animation:ani-leaf3 9s ease-in-out 0s infinite alternate forwards running;
-    -o-animation:ani-leaf3 9s ease-in-out 0s infinite alternate forwards running;
-    animation:ani-leaf3 9s ease-in-out 0s infinite alternate forwards running;
+    -webkit-animation:ani-leaf3 9s ease-in-out 0s infinite alternate forwards;
+    -moz-animation:ani-leaf3 9s ease-in-out 0s infinite alternate forwards;
+    -o-animation:ani-leaf3 9s ease-in-out 0s infinite alternate forwards;
+    animation:ani-leaf3 9s ease-in-out 0s infinite alternate forwards;
 }
 
 
@@ -374,10 +368,31 @@
 }
 
 .ani-leaf4{
-    -webkit-animation:ani-leaf4 9s ease-in-out 0s infinite alternate forwards running;
-    -moz-animation:ani-leaf4 9s ease-in-out 0s infinite alternate forwards running;
-    -o-animation:ani-leaf4 9s ease-in-out 0s infinite alternate forwards running;
-    animation:ani-leaf4 9s ease-in-out 0s infinite alternate forwards running;
+    -webkit-animation:ani-leaf4 9s ease-in-out 0s infinite alternate forwards;
+    -moz-animation:ani-leaf4 9s ease-in-out 0s infinite alternate forwards;
+    -o-animation:ani-leaf4 9s ease-in-out 0s infinite alternate forwards;
+    animation:ani-leaf4 9s ease-in-out 0s infinite alternate forwards;
+}
+
+@keyframes ani-leaf5 {
+    100%{
+        transform-origin: right top;
+        transform:rotateX(15deg) rotateY(15deg);
+    }
+}
+
+@-webkit-keyframes ani-leaf5-leaf4 {
+    100%{
+        transform-origin: right top;
+        transform:rotateX(15deg) rotateY(15deg);
+    }
+}
+
+.ani-leaf5{
+    -webkit-animation:ani-leaf5 4s ease-in-out 0s infinite alternate forwards;
+    -moz-animation:ani-leaf5 4s ease-in-out 0s infinite alternate forwards;
+    -o-animation:ani-leaf5 4s ease-in-out 0s infinite alternate forwards;
+    animation:ani-leaf5 4s ease-in-out 0s infinite alternate forwards;
 }
 
 @keyframes ani-hand2 {
@@ -399,10 +414,10 @@
 }
 
 .ani-hand2{
-    -webkit-animation:ani-hand2 1s ease-out 0s 1 normal forwards running;
-    -moz-animation:ani-hand2 1s ease-out 0s 1 normal forwards running;
-    -o-animation:ani-hand2 1s ease-out 0s 1 normal forwards running;
-    animation:ani-hand2 1s ease-out 0s 1 normal forwards running;
+    -webkit-animation:ani-hand2 1s ease-out 0s 1 normal forwards;
+    -moz-animation:ani-hand2 1s ease-out 0s 1 normal forwards;
+    -o-animation:ani-hand2 1s ease-out 0s 1 normal forwards;
+    animation:ani-hand2 1s ease-out 0s 1 normal forwards;
 }
 
 
@@ -421,10 +436,10 @@
 }
 
 .ani-toBig1 {
-    -webkit-animation:ani-toBig1 1s ease-out 0s 1 normal forwards running;
-    -moz-animation:ani-toBig1 1s ease-out 0s 1 normal forwards running;
-    -o-animation:ani-toBig1 1s ease-out 0s 1 normal forwards running;
-    animation:ani-toBig1 1s ease-out 0s 1 normal forwards running;
+    -webkit-animation:ani-toBig1 1s ease-out 0s 1 normal forwards;
+    -moz-animation:ani-toBig1 1s ease-out 0s 1 normal forwards;
+    -o-animation:ani-toBig1 1s ease-out 0s 1 normal forwards;
+    animation:ani-toBig1 1s ease-out 0s 1 normal forwards;
 }
 
 @-webkit-keyframes ani-toBig2 {
@@ -441,10 +456,10 @@
 }
 
 .ani-toBig2 {
-    -webkit-animation:ani-toBig2 1s ease-out 0s 1 normal forwards running;
-    -moz-animation:ani-toBig2 1s ease-out 0s 1 normal forwards running;
-    -o-animation:ani-toBig2 1s ease-out 0s 1 normal forwards running;
-    animation:ani-toBig2 1s ease-out 0s 1 normal forwards running;
+    -webkit-animation:ani-toBig2 1s ease-out 0s 1 normal forwards;
+    -moz-animation:ani-toBig2 1s ease-out 0s 1 normal forwards;
+    -o-animation:ani-toBig2 1s ease-out 0s 1 normal forwards;
+    animation:ani-toBig2 1s ease-out 0s 1 normal forwards;
 }
 
 @-webkit-keyframes ani-fadeOut {
@@ -465,10 +480,10 @@
 }
 
 .ani-fadeOut {
-    -webkit-animation:ani-fadeOut 0.5s linear 0s 1 normal forwards running;
-    -moz-animation:ani-fadeOut 0.5s linear 0s 1 normal forwards running;
-    -o-animation:ani-fadeOut 0.5s linear 0s 1 normal forwards running;
-    animation:ani-fadeOut 0.5s linear 0s 1 normal forwards running;
+    -webkit-animation:ani-fadeOut 0.5s linear 0s 1  forwards;
+    -moz-animation:ani-fadeOut 0.5s linear 0s 1  forwards;
+    -o-animation:ani-fadeOut 0.5s linear 0s 1  forwards;
+    animation:ani-fadeOut 0.5s linear 0s 1  forwards;
 }
 
 
@@ -490,10 +505,8 @@
 }
 
 .ani-fadeIn {
-    -webkit-animation:ani-fadeIn 0.5s linear 0s 1 normal forwards running;
-    -moz-animation:ani-fadeIn 0.5s linear 0s 1 normal forwards running;
-    -o-animation:ani-fadeIn 0.5s linear 0s 1 normal forwards running;
-    animation:ani-fadeIn 0.5s linear 0s 1 normal forwards running;
+    -webkit-animation:ani-fadeIn 0.5s linear  1  forwards;
+    animation:ani-fadeIn 0.5s linear 1 forwards;
 }
 
 
@@ -515,12 +528,31 @@
 }
 
 .ani-bgmRotate{
-    -webkit-animation:ani-bgmRotate 1s linear 0s infinite normal forwards running;
-    -moz-animation:ani-bgmRotate 1s linear 0s infinite normal forwards running;
-    -o-animation:ani-bgmRotate 1s linear 0s infinite normal forwards running;
-    animation:ani-bgmRotate 1s linear 0s infinite normal forwards running;
+    -webkit-animation:ani-bgmRotate 1s linear 0s infinite forwards;
+    animation:ani-bgmRotate 1s linear 0s infinite forwards;
 }
 .ani-bgmRotate.ani-bgmPause{
     animation-play-state:paused;
     -webkit-animation-play-state:paused;
+}
+
+@keyframes ani-arrdown {
+    100%{
+        transform:translateY(30px);
+        opacity:1;
+    }
+}
+
+@-webkit-keyframes ani-arrdown {
+    100%{
+        -webkit-transform:translateY(30px);
+        opacity:1;
+    }
+}
+
+.ani-arrdown{
+    -webkit-animation:ani-arrdown 2s ease-out 0s infinite normal forwards;
+    -moz-animation:ani-arrdown 2s ease-out 0s infinite normal forwards;
+    -o-animation:ani-arrdown 2s ease-out 0s infinite normal forwards;
+    animation:ani-arrdown 2s ease-out 0s infinite normal forwards;
 }

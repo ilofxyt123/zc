@@ -70,7 +70,6 @@
             },20)
         }
     };
-    Media.WxMediaInit();
     var Utils = new function(){
         this.preloadImage = function(ImageURL,callback,realLoading){
             var rd = realLoading||false;
@@ -140,6 +139,7 @@
             $(selector).on(type,handle);
         }
     };
+    Media.WxMediaInit();
     a.output = {main:Main,media:Media,utils:Utils};
 
     var main = function(){
@@ -154,6 +154,7 @@
         this.clockSwitch = undefined;//定时器句柄
 
         this.router;//管理页面跳转
+
 
         this.pages = ["pact",""];
 
@@ -181,7 +182,8 @@
             $obj:$(".bird"),
             nowPosition:{x:-386,y:100},
             startPosition:{x:-386,y:100},
-            endPosition:{x:0,y:0}
+            endPosition:{x:0,y:0},
+            voice:document.getElementById("birdVoice")
         };
 
         this.picUrl = "images/";//图片路径
@@ -370,7 +372,6 @@
             this.bgm.isPlay = false;
         },
         start:function(){
-            this.playbgm();
             Utils.preloadImage(this.ImageList,this.startCallback.bind(this),true);
         },
         startCallback:function(){
@@ -416,6 +417,7 @@
                 deltaX = this.bird.endPosition.x - this.bird.startPosition.x,
                 deltaY = this.bird.endPosition.y - this.bird.startPosition.y;
             $(".P1").fadeIn(function(){
+                _self.bird.voice.play();
                 $(".fadetxt img").addClass("ani-fadeIn");
                 var clock = setInterval(function(){
                     nowTime += 20;
@@ -423,7 +425,7 @@
                     _self.bird.nowPosition.y = _self.easeOut(nowTime,_self.bird.startPosition.y,deltaY,2500);
                     if(nowTime == 2500){
                         console.log("动画结束");
-                        $(".p1-point").fadeIn();
+                        $(".p1-point,.p1-point-clickArea").fadeIn();
                         clearInterval(clock);
                         return;
                     }
@@ -434,6 +436,7 @@
         },
         p1leave:function(){
             $(".P1").fadeOut();
+            this.bird.voice.pause();
         },
         pvip1:function(){
             $(".P_Vip1").fadeIn(function(){
@@ -449,8 +452,12 @@
         pvip2leave:function(){
             $(".P_Vip2").fadeOut();
         },
-        pnotvip:function(){},
-        pnotvipleave:function(){},
+        pnotvip:function(){
+            $(".P_NotVip").fadeIn();
+        },
+        pnotvipleave:function(){
+            $(".P_NotVip").fadeOut();
+        },
         pchaxun:function(){
             $(".P_chaxun").fadeIn();
         },
@@ -506,7 +513,7 @@
         addEvent:function(){
             var _self = this;
             /////////p1//////////
-            $(".p1-point").on("touchend",function(){
+            $(".p1-point-clickArea").on("touchend",function(){
                 $(".p1-hand").addClass("ani-hand");
             });
             $(".hand").on("webkitAnimationEnd",function(){
@@ -557,6 +564,30 @@
                 }
             });
             /////////vip2//////////
+
+            /////////pnotvip//////////
+            $(".P_NotVip").on({
+                touchstart:function(e){
+                    _self.touch.StartY = e.originalEvent.changedTouches[0].pageY;
+                    _self.touch.NewY = e.originalEvent.changedTouches[0].pageY;
+                },
+                touchmove:function(e){
+
+                },
+                touchend:function(e){
+                    _self.touch.NewY = e.originalEvent.changedTouches[0].pageY;
+                    _self.touch.addY = _self.touch.NewY - _self.touch.StartY;
+                    if(_self.touch.addY<-30){
+                        _self.pnotvipleave();
+                        _self.pact_mask();
+                        _self.pact();
+                        _self.clockSwitch = setTimeout(function(){
+                            _self.pact_maskleave();
+                        },3000)
+                    }
+                }
+            });
+            /////////pnotvip//////////
 
             /////////pmask//////////
             $(".mask-point").on("touchend",function(){
@@ -696,7 +727,7 @@ $(function(){
     var Main = new main();
     Main.addEvent();
     Main.start();
-
+    Main.playbgm();
     /////////测试输出/////////
     window.test = Main;
     console.log(test);
@@ -708,6 +739,7 @@ $(function(){
     // media.WxMediaInit();
     // utils.E(window,"touchstart",function(){media.MutedPlay("video");console.log(1)})
 });
+
 
 
 

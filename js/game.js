@@ -139,6 +139,7 @@
             $(selector).on(type,handle);
         }
     };
+    Media.WxMediaInit();
     a.output = {main:Main,media:Media,utils:Utils};
 
     var game = function(){
@@ -194,6 +195,7 @@
             this.bgm.isPlay = false;
         },
         start:function(){
+            this.playbgm();
             this.clockSwitch = setTimeout(function(){
                                     $(".P_gameMask").addClass("ani-fadeOut");
                                 },3000);
@@ -350,7 +352,6 @@ window.onload = function(){
     var Game = new game();
     Game.addEvent();
     Game.start();
-
 
     /////////测试输出/////////
     window.test = Game;
