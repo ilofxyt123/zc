@@ -455,14 +455,14 @@
         <img src="images/weile.png" class="hp_tip">
     </div>
 </div>
-<audio id="bgm" src="music.mp3" preload="auto" loop="true" class="iosPreload"></audio>
+<audio id="bgm" src="music.mp3?v1" preload="auto" loop="true" class="iosPreload"></audio>
 <audio id="birdVoice" src="bird.mp3" preload="auto" loop="true" class="iosPreload"></audio>
 <script src="js/jquery-1.11.3.min.js"></script>
 <input type="hidden" id="is_end" value="0" /><!--活动是否结束-->
 <input type="hidden" id="prizeType" value="2" /><!--奖品类型:0,1,2-->
 <input type="hidden" id="have_guanzhu" value="1" /><!--是否关注-->
 <input type="hidden" id="is_vip" value="0" /><!--是否是vip-->
-<input type="hidden" id="havePay" value="0" /><!--是否付过钱-->
+<input type="hidden" id="havePay" value="1" /><!--是否付过钱-->
 <input type="hidden" id="FromTuiSong" value="0" /><!--是否从推送进页面-->
 <input type="hidden" id="isOpen4999" value="0" /><!--4999大奖是否已知-->
 <input type="hidden" id="openid" value="" />
@@ -477,6 +477,15 @@
     var js;
     js = '<' + 'script ' + 'src=' + "js/index.js?v" + Math.random() + '>' + '</' + 'script' + '>'
     document.write(js)
+</script>
+<script>
+    var _hmt = _hmt || [];
+    (function() {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?7667ed09758b5799bd9197e514cbe596";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
 </script>
 </body>
 </html>

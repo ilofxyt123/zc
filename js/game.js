@@ -150,12 +150,14 @@
         this.touch ={
             ScrollObj:undefined,
             isScroll:false,
-            limit:0,
+            limitUp:0,
+            limitDown:undefined,
             overlimit:false,
             StartY:0,
             NewY:0,
             addY:0,
-            scrollY:0
+            scrollY:0,
+            touchAllow:true
         };
 
         this.bgm ={
@@ -184,6 +186,14 @@
             $(".progress-bar").css("transform","scaleX("+percent+")");
             /////////////处理参与活动页面///////////////
         },
+        scrollInit:function(selector,start){
+            this.touch.ScrollObj = $(selector);
+            this.touch.StartY = 0;
+            this.touch.NewY = 0;
+            this.touch.addY = 0;
+            this.touch.scrollY = 0;
+            this.touch.limitDown = this.touch.ScrollObj.height()<start?0:(start-this.touch.ScrollObj.height());
+        },
         playbgm:function(){
             this.bgm.obj.play();
             this.bgm.button.addClass("ani-bgmRotate").removeClass("ani-bgmPause");
@@ -205,6 +215,9 @@
         },
         pgameresult:function(){
             $(".P_game_result").fadeIn();
+        },
+        pgameresultleave:function(){
+            $(".P_game_result").fadeOut();
         },
         pgamemaskleave:function(){
             $(".P_gameMask").addClass("ani-fadeOut");
@@ -239,7 +252,10 @@
             $(".P_chaxun").fadeOut();
         },
         plist:function(){
-            $(".P_List").fadeIn();
+            var _self = this;
+            $(".P_List").fadeIn(function(){
+                _self.scrollInit(".table-ul",300);
+            });
         },
         plistleave:function(){
             $(".P_List").fadeOut();
@@ -322,8 +338,43 @@
                     _self.playbgm();
                 }
             });
+
+            $(".game-result-detail").on("touchend",function(){
+                _self.plist();
+                _self.pgameresultleave();
+            });
+            $(".listxx").on("touchend",function(){
+                _self.plistleave();
+                _self.pgameresult();
+            });
             $(".rulexx").on("touchend",function(){//关闭规则
                 $(".P_rule").fadeOut();
+            });
+            $(".table-visible-area").on({
+                touchstart:function(e){
+                    _self.touch.StartY = e.originalEvent.changedTouches[0].pageY;
+                    _self.touch.NewY = e.originalEvent.changedTouches[0].pageY;
+                },
+                touchmove:function(e){
+                    _self.touch.NewY = e.originalEvent.changedTouches[0].pageY;
+                    _self.touch.addY = _self.touch.NewY - _self.touch.StartY;
+                    _self.touch.StartY = _self.touch.NewY;
+                    if(_self.touch.scrollY+_self.touch.addY<_self.touch.limitUp){
+                        if(_self.touch.scrollY+_self.touch.addY>_self.touch.limitDown){
+                            _self.touch.scrollY+=_self.touch.addY;
+                        }
+                        else{
+                            _self.touch.scrollY=_self.touch.limitDown;
+                        }
+                    }
+                    else{
+                        _self.touch.scrollY=_self.touch.limitUp;
+                    }
+                    _self.touch.ScrollObj[0].style.webkitTransform="translate3d(0,"+_self.touch.scrollY+"px,0)";
+                },
+                touchend:function(e){
+
+                }
             });
             $(window).on("orientationchange",function(e){
                 if(window.orientation == 0 || window.orientation == 180 )

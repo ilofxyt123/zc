@@ -304,10 +304,10 @@
 }
 
 .ani-leaf1{
-    -webkit-animation:ani-leaf1 9s ease-in-out 0s infinite alternate forwards;
-    -moz-animation:ani-leaf1 9s ease-in-out 0s infinite alternate forwards;
-    -o-animation:ani-leaf1 9s ease-in-out 0s infinite alternate forwards;
-    animation:ani-leaf1 9s ease-in-out 0s infinite alternate forwards;
+    -webkit-animation:ani-leaf1 7s ease-in-out 0s infinite alternate forwards;
+    -moz-animation:ani-leaf1 7s ease-in-out 0s infinite alternate forwards;
+    -o-animation:ani-leaf1 7s ease-in-out 0s infinite alternate forwards;
+    animation:ani-leaf1 7s ease-in-out 0s infinite alternate forwards;
 }
 
 @keyframes ani-leaf2 {
@@ -325,10 +325,10 @@
 }
 
 .ani-leaf2{
-    -webkit-animation:ani-leaf2 9s ease-in-out 0s infinite alternate forwards;
-    -moz-animation:ani-leaf2 9s ease-in-out 0s infinite alternate forwards;
-    -o-animation:ani-leaf2 9s ease-in-out 0s infinite alternate forwards;
-    animation:ani-leaf2 9s ease-in-out 0s infinite alternate forwards;
+    -webkit-animation:ani-leaf2 7s ease-in-out 0s infinite alternate forwards;
+    -moz-animation:ani-leaf2 7s ease-in-out 0s infinite alternate forwards;
+    -o-animation:ani-leaf2 7s ease-in-out 0s infinite alternate forwards;
+    animation:ani-leaf2 7s ease-in-out 0s infinite alternate forwards;
 }
 
 @keyframes ani-leaf3 {
@@ -346,10 +346,10 @@
 }
 
 .ani-leaf3{
-    -webkit-animation:ani-leaf3 9s ease-in-out 0s infinite alternate forwards;
-    -moz-animation:ani-leaf3 9s ease-in-out 0s infinite alternate forwards;
-    -o-animation:ani-leaf3 9s ease-in-out 0s infinite alternate forwards;
-    animation:ani-leaf3 9s ease-in-out 0s infinite alternate forwards;
+    -webkit-animation:ani-leaf3 7s ease-in-out 0s infinite alternate forwards;
+    -moz-animation:ani-leaf3 7s ease-in-out 0s infinite alternate forwards;
+    -o-animation:ani-leaf3 7s ease-in-out 0s infinite alternate forwards;
+    animation:ani-leaf3 7s ease-in-out 0s infinite alternate forwards;
 }
 
 
@@ -368,10 +368,10 @@
 }
 
 .ani-leaf4{
-    -webkit-animation:ani-leaf4 9s ease-in-out 0s infinite alternate forwards;
-    -moz-animation:ani-leaf4 9s ease-in-out 0s infinite alternate forwards;
-    -o-animation:ani-leaf4 9s ease-in-out 0s infinite alternate forwards;
-    animation:ani-leaf4 9s ease-in-out 0s infinite alternate forwards;
+    -webkit-animation:ani-leaf4 7s ease-in-out 0s infinite alternate forwards;
+    -moz-animation:ani-leaf4 7s ease-in-out 0s infinite alternate forwards;
+    -o-animation:ani-leaf4 7s ease-in-out 0s infinite alternate forwards;
+    animation:ani-leaf4 7s ease-in-out 0s infinite alternate forwards;
 }
 
 @keyframes ani-leaf5 {
