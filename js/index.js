@@ -1,4 +1,25 @@
-!function(a){
+(function(a){
+    $.fn.extend({
+        cb:undefined,
+        fiHandler:function(e){
+            $(this).removeClass("opacity ani-fadeIn");
+            if(this.cb){this.cb();};
+            $(this).off("webkitAnimationEnd",$(this).fiHandler);
+        },
+        foHandler:function(e){
+            $(this).addClass("none").removeClass("ani-fadeOut");
+            if(this.cb){this.cb();};
+            $(this).off("webkitAnimationEnd",$(this).foHandler);
+        },
+        fi:function(cb){
+            this[0].cb = cb;
+            $(this).on("webkitAnimationEnd",$(this).fiHandler).addClass("opacity ani-fadeIn").removeClass("none");
+        },
+        fo:function(cb){
+            this[0].cb = cb;
+            $(this).on("webkitAnimationEnd",$(this).foHandler).addClass("ani-fadeOut");
+        }
+    });
     var Main = new function(){//项目主流程
         this.a={
             ImageList:[
@@ -152,6 +173,7 @@
         this.isOpen4999;//是否已经开启4999大奖
         this.nowPeople;
         this.clockSwitch = undefined;//定时器句柄
+        this.haveFill;//是否填写过中奖信息
 
         this.router;//管理页面跳转
 
@@ -326,6 +348,7 @@
             this.prizeType = $("#prizeType").val();//number
             this.isOpen4999 = $("#isOpen4999").val();//boolean
             this.nowPeople = $(".now-people").html();//number
+            this.haveFill = $("#haveFill").val();//boolean
 
 
             ///////////////////套后台后可删除///////////////////
@@ -337,6 +360,7 @@
             this.prizeType = parseInt(this.prizeType);
             this.isOpen4999 = !!Number(this.isOpen4999);
             this.nowPeople = parseInt(this.nowPeople);
+            this.haveFill = !!Number(this.haveFill);
             ///////////////////套后台后可删除///////////////////
 
             ///////////////处理查询页面///////////////
@@ -344,6 +368,8 @@
                 case 0:
                     break;
                 case 1://4999大奖
+                    if(this.haveFill){$(".result1-bottom-fill").removeClass("none");}
+                    else{$(".result1-bottom-nofill").removeClass("none");}
                     $(".prize-result1").removeClass("none");
                     break;
                 case 2://188小奖
@@ -419,14 +445,14 @@
             $(".music-btn,.rule-btn").removeClass("none");
         },
         loadleave:function(){
-            $(".P_loading").fadeOut();
+            $(".P_loading").fo();
         },
         p1:function(){
-            var nowTime = 0,
+            var nowTime = 0,//当前运动时间
                 _self = this,
                 deltaX = this.bird.endPosition.x - this.bird.startPosition.x,
                 deltaY = this.bird.endPosition.y - this.bird.startPosition.y;
-            $(".P1").fadeIn(function(){
+            $(".P1").fi(function(){
                 _self.bird.voice.play();
                 $(".fadetxt img").addClass("ani-fadeIn");
                 var clock = setInterval(function(){
@@ -445,11 +471,11 @@
 
         },
         p1leave:function(){
-            $(".P1").fadeOut();
+            $(".P1").fo();
             this.bird.voice.pause();
         },
         pvip1:function(){
-            $(".P_Vip1").fadeIn(function(){
+            $(".P_Vip1").fi(function(){
                 $(".select-ban").addClass("none");
             });
         },
@@ -463,7 +489,7 @@
             $(".P_Vip2").fadeOut();
         },
         pnotvip:function(){
-            $(".P_NotVip").fadeIn();
+            $(".P_NotVip").fi();
         },
         pnotvipleave:function(){
             $(".P_NotVip").fadeOut();
@@ -475,10 +501,10 @@
             $(".P_chaxun").fadeOut();
         },
         pact_mask:function(){
-            $(".P_mask").fadeIn();
+            $(".P_mask").fi();
         },
         pact_maskleave:function(){
-            $(".P_mask").fadeOut(function(){
+            $(".P_mask").fo(function(){
 
                 $(".hd-left-scale").addClass("ani-toBig1");
                 $(".hd-right-scale").addClass("ani-toBig2");
@@ -667,10 +693,10 @@
                 _self.pfill();
                 _self.pchaxunleave();
             });
-            $(".chaxun-result1-btn2").on("touchend",function(){
+            $(".chaxun-result1-btn2,.chaxun-result1-btn4").on("touchend",function(){
                 _self.paddress();
             });
-            $(".chaxun-result1-btn3").on("touchend",function(){
+            $(".chaxun-result1-btn3,.chaxun-result1-btn5").on("touchend",function(){
                 _self.pshare();
             });
 
@@ -694,28 +720,28 @@
                 _self.pact();
             });
             /////////plist//////////
-            $(document).on("webkitAnimationEnd",function(e){//试点技术，暂未启用，用以优化安卓fadeIn和fadeOut
-                var animationName = e.originalEvent.animationName,
-                    $dom = $(e.target);
-                switch(animationName){
-                    case "ani-fadeOut":
-                        $dom.addClass("none").removeClass("ani-fadeOut");
-                        break;
-                    case "ani-fadeIn":
-                        $dom.removeClass("none").removeClass("opacity ani-fadeIn");
-                        break;
-                }
-                animationName = null;
-                $dom = null;
-            });
+            // $(document).on("webkitAnimationEnd",function(e){//试点技术，暂未启用，用以优化安卓fadeIn和fadeOut
+            //     var animationName = e.originalEvent.animationName,
+            //         $dom = $(e.target);
+            //     switch(animationName){
+            //         case "ani-fadeOut":
+            //             $dom.addClass("none").removeClass("ani-fadeOut");
+            //             break;
+            //         case "ani-fadeIn":
+            //             $dom.removeClass("none").removeClass("opacity ani-fadeIn");
+            //             break;
+            //     }
+            //     animationName = null;
+            //     $dom = null;
+            // });
             $(".rule-btn").on("touchend",function(){//打开规则
-                $(".P_rule").fadeIn();
+                $(".P_rule").fi();
             });
             $(".P_share").on("touchend",function(){//打开分享
                 $(this).fadeOut();
             });
             $(".rulexx").on("touchend",function(){//关闭规则
-                $(".P_rule").fadeOut();
+                $(".P_rule").fo();
             });
             $(".fill-submit-btn").on("touchend",function(){
                 var phoneNumber= $("#phone").val(),
@@ -761,7 +787,7 @@
     };
     window.main = main;
 /*-----------------------------事件绑定--------------------------------*/
-}(window);
+}(window));
 $(function(){
     var Main = new main();
     Main.addEvent();

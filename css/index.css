@@ -153,12 +153,21 @@ html,body{
 
 .P_chaxun{}
     .back{left:47px;top:88px;z-index:2;}
-    .prize-result1{position:absolute;width:640px;height:770px;top:105px;z-index:1;}
+    .prize-result1{position:absolute;width:640px;height:770px;top:70px;z-index:1;}
         .chaxun-title{top:0;left:50%;margin-left:-189px;}
         .prize4999{top:205px;left:50%;margin-left:-175px;}
-        .chaxun-result1-btn1{top:543px;left:50%;margin-left:-168px;}
-        .chaxun-result1-btn2{top:626px;left:50%;margin-left:-168px;}
-        .chaxun-result1-btn3{top:705px;left:50%;margin-left:-168px;}
+        .result1-bottom-nofill{width:411px;height:313px;position: absolute;top:550px;left:50%;margin-left:-206px;}
+            .chaxun-result1-btn1{top:0;left:50%;margin-left:-168px;}
+            .chaxun-result1-btn2{top:80px;left:50%;margin-left:-168px;}
+            .chaxun-result1-btn3{top:160px;left:50%;margin-left:-168px;}
+            .result-bottom-tip1{bottom:0;left:0;}
+        .result1-bottom-fill{width:462px;height:294px;position: absolute;left:50%;margin-left:-231px;top:534px;text-align: center;}
+            .chaxun-fill-txt{height:30px;display:inline-block;width:auto;white-space: nowrap;}
+                .chaxun-fill-txt img{position:relative;top:4px;left:0;display: inline-block;}
+                .fill-address{display: inline-block;}
+            .chaxun-result1-btn4{top:56px;left:50%;margin-left:-168px;}
+            .chaxun-result1-btn5{top:138px;left:50%;margin-left:-168px;}
+            .result-bottom-tip2{bottom:0;left:0;}
     .prize-result2{position:absolute;width:640px;height:734px;top:125px;z-index:1;}
         .isEnd4999{position:absolute;width:640px;height:590px;top:0;}
             .result2-end-title{top:0;left:50%;margin-left:-235px;}
