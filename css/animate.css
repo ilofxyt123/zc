@@ -161,20 +161,45 @@
 
 
 @keyframes ani-move1 {
+    /*0%{*/
+        /*transform:translateX(0);*/
+    /*}*/
+    /*100%{*/
+        /*transform:translateX(-2030px);*/
+    /*}*/
+    /*0%{*/
+        /*transform:translate3d(0,0,0);*/
+    /*}*/
+    /*100%{*/
+        /*transform:translate3d(-2030px,0,0);*/
+    /*}*/
     0%{
-        transform:translateX(0);
+        left:0;
     }
     100%{
-        transform:translateX(-2030px);
+        left:-2030px;
     }
 }
 
 @-webkit-keyframes ani-move1 {
+    /*0%{*/
+        /*transform:translateX(0);*/
+    /*}*/
+    /*100%{*/
+        /*transform:translateX(-2030px);*/
+    /*}*/
+    /*0%{*/
+
+        /*transform:translate3d(0,0,0);*/
+    /*}*/
+    /*100%{*/
+        /*transform:translate3d(-2030px,0,0);*/
+    /*}*/
     0%{
-        transform:translateX(0);
+        left:0;
     }
     100%{
-        transform:translateX(-2030px);
+        left:-2030px;
     }
 }
 .ani-move1{
@@ -185,20 +210,44 @@
 }
 
 @keyframes ani-move2 {
+    /*0%{*/
+        /*transform:translateX(0);*/
+    /*}*/
+    /*100%{*/
+        /*transform:translateX(-1281px);*/
+    /*}*/
+    /*0%{*/
+        /*transform:translate3d(0,0,0);*/
+    /*}*/
+    /*100%{*/
+        /*transform:translate3d(-1281px,0,0);*/
+    /*}*/
     0%{
-        transform:translateX(0);
+        left:0;
     }
     100%{
-        transform:translateX(-1281px);
+        left:-1281px;
     }
 }
 
 @-webkit-keyframes ani-move2 {
+    /*0%{*/
+        /*transform:translateX(0);*/
+    /*}*/
+    /*100%{*/
+        /*transform:translateX(-1281px);*/
+    /*}*/
+    /*0%{*/
+        /*transform:translate3d(0,0,0);*/
+    /*}*/
+    /*100%{*/
+        /*transform:translate3d(-1281px,0,0);*/
+    /*}*/
     0%{
-        transform:translateX(0);
+        left:0;
     }
     100%{
-        transform:translateX(-1281px);
+        left:-1281px;
     }
 }
 .ani-move2{
@@ -304,87 +353,87 @@
 }
 
 .ani-leaf1{
-    -webkit-animation:ani-leaf1 7s ease-in-out 0s infinite alternate forwards;
-    -moz-animation:ani-leaf1 7s ease-in-out 0s infinite alternate forwards;
-    -o-animation:ani-leaf1 7s ease-in-out 0s infinite alternate forwards;
-    animation:ani-leaf1 7s ease-in-out 0s infinite alternate forwards;
+    -webkit-animation:ani-leaf1 6s ease-in-out 0s infinite alternate forwards;
+    -moz-animation:ani-leaf1 6s ease-in-out 0s infinite alternate forwards;
+    -o-animation:ani-leaf1 6s ease-in-out 0s infinite alternate forwards;
+    animation:ani-leaf1 6s ease-in-out 0s infinite alternate forwards;
 }
 
 @keyframes ani-leaf2 {
     50%{
         transform-origin: right bottom;
-        transform:rotateY(5deg) rotateZ(-4deg) rotateX(8deg);
+        transform:rotateY(5deg) rotateZ(-4deg) rotateX(15deg);
     }
 }
 
 @-webkit-keyframes ani-leaf2 {
     50%{
         transform-origin: right bottom;
-        transform:rotateY(5deg) rotateZ(-4deg) rotateX(8deg);
+        transform:rotateY(5deg) rotateZ(-4deg) rotateX(15deg);
     }
 }
 
 .ani-leaf2{
-    -webkit-animation:ani-leaf2 7s ease-in-out 0s infinite alternate forwards;
-    -moz-animation:ani-leaf2 7s ease-in-out 0s infinite alternate forwards;
-    -o-animation:ani-leaf2 7s ease-in-out 0s infinite alternate forwards;
-    animation:ani-leaf2 7s ease-in-out 0s infinite alternate forwards;
+    -webkit-animation:ani-leaf2 6s ease-in-out 0s infinite alternate forwards;
+    -moz-animation:ani-leaf2 6s ease-in-out 0s infinite alternate forwards;
+    -o-animation:ani-leaf2 6s ease-in-out 0s infinite alternate forwards;
+    animation:ani-leaf2 6s ease-in-out 0s infinite alternate forwards;
 }
 
 @keyframes ani-leaf3 {
     50%{
         transform-origin: right bottom;
-        transform:rotateX(15deg);
+        transform:rotateX(20deg);
     }
 }
 
 @-webkit-keyframes ani-leaf3 {
     50%{
         transform-origin: right bottom;
-        transform:rotateX(15deg);
+        transform:rotateX(20deg);
     }
 }
 
 .ani-leaf3{
-    -webkit-animation:ani-leaf3 7s ease-in-out 0s infinite alternate forwards;
-    -moz-animation:ani-leaf3 7s ease-in-out 0s infinite alternate forwards;
-    -o-animation:ani-leaf3 7s ease-in-out 0s infinite alternate forwards;
-    animation:ani-leaf3 7s ease-in-out 0s infinite alternate forwards;
+    -webkit-animation:ani-leaf3 6s ease-in-out 0s infinite alternate forwards;
+    -moz-animation:ani-leaf3 6s ease-in-out 0s infinite alternate forwards;
+    -o-animation:ani-leaf3 6s ease-in-out 0s infinite alternate forwards;
+    animation:ani-leaf3 6s ease-in-out 0s infinite alternate forwards;
 }
 
 
 @keyframes ani-leaf4 {
     50%{
         transform-origin: left bottom;
-        transform:rotateX(15deg);
+        transform:rotateX(20deg);
     }
 }
 
 @-webkit-keyframes ani-leaf4 {
     50%{
         transform-origin: left bottom;
-        transform:rotateX(15deg);
+        transform:rotateX(20deg);
     }
 }
 
 .ani-leaf4{
-    -webkit-animation:ani-leaf4 7s ease-in-out 0s infinite alternate forwards;
-    -moz-animation:ani-leaf4 7s ease-in-out 0s infinite alternate forwards;
-    -o-animation:ani-leaf4 7s ease-in-out 0s infinite alternate forwards;
-    animation:ani-leaf4 7s ease-in-out 0s infinite alternate forwards;
+    -webkit-animation:ani-leaf4 6s ease-in-out 0s infinite alternate forwards;
+    -moz-animation:ani-leaf4 6s ease-in-out 0s infinite alternate forwards;
+    -o-animation:ani-leaf4 6s ease-in-out 0s infinite alternate forwards;
+    animation:ani-leaf4 6s ease-in-out 0s infinite alternate forwards;
 }
 
 @keyframes ani-leaf5 {
     100%{
         transform-origin: right top;
-        transform:rotateX(15deg) rotateY(15deg);
+        transform:rotateX(20deg) rotateY(20deg);
     }
 }
 
-@-webkit-keyframes ani-leaf5-leaf4 {
+@-webkit-keyframes ani-leaf5 {
     100%{
         transform-origin: right top;
-        transform:rotateX(15deg) rotateY(15deg);
+        transform:rotateX(20deg) rotateY(20deg);
     }
 }
 
@@ -531,7 +580,7 @@
     -webkit-animation:ani-bgmRotate 1s linear 0s infinite forwards;
     animation:ani-bgmRotate 1s linear 0s infinite forwards;
 }
-.ani-bgmRotate.ani-bgmPause{
+.ani-bgmPause{
     animation-play-state:paused;
     -webkit-animation-play-state:paused;
 }

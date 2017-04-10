@@ -175,6 +175,7 @@
 
         this.bgm ={
             obj:document.getElementById("bgm"),
+            id:"bgm",
             isPlay:false,
             button:$(".music-btn")
         };
@@ -371,13 +372,13 @@
             this.touch.limitDown = this.touch.ScrollObj.height()<start?0:(start-this.touch.ScrollObj.height());
         },
         playbgm:function(){
-            this.bgm.obj.play();
-            this.bgm.button.addClass("ani-bgmRotate").removeClass("ani-bgmPause");
+            Media.playMedia(this.bgm.obj.id)
+            this.bgm.button.addClass("ani-bgmRotate");
             this.bgm.isPlay = true;
         },
         pausebgm:function(){
             this.bgm.obj.pause();
-            this.bgm.button.addClass("ani-bgmPause");
+            this.bgm.button.removeClass("ani-bgmRotate");
             this.bgm.isPlay = false;
         },
         start:function(){

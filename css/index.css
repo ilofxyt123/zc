@@ -50,36 +50,36 @@ html,body{
     .css-bird2{width:257px;height:189px;background-image: url("../images/bird.png");background-repeat: no-repeat;background-size:auto;position: absolute;}
     /*.env{left:203px;top:307px;}*/
     .hand{top:424px;left:310px;}
-    .p1-point-clickArea{width:100px;height:100px;position: absolute;left:50%;margin-left:-43px;top:370px;z-index:10;}
+    .p1-point-clickArea{width:138px;height:158px;position: absolute;left:50%;margin-left:-85px;top:304px;z-index:10;}
     .point{width:34px;height:34px;position:absolute;left:313px;top:403px;z-index:4;}
         .out{width:34px;height:34px;border:solid 4px rgba(248,181,81,0.66);position:absolute;left:0;top:0;border-radius:50%;}
         .out-change{width:34px;height:34px;border:solid 4px rgba(248,181,81,0.66);position:absolute;left:0;top:0;border-radius:50%;}
         .in{position: absolute;width:18px;height:18px;left:8px;top:8px;border-radius:50%;background-color:#f8b551;}
-    .p1-1{position:absolute;width:134px;height:184px;right:-44px;top:30px;perspective:800px;}
+    .p1-1{position:absolute;width:134px;height:184px;right:-44px;top:30px;perspective:400px;}
         .rotateImg{transform:rotateX(-15deg) rotateY(-15deg);}
     .p1-2{left:34px;top:243px;}
     .p1-3{right:44px;top:253px;}
-    .p1-bottom{width:640px;height:410px;position:absolute;top:630px;perspective:800px;}
-        .bottom-move1{z-index:1;top:90px;left:640px;}
-        .bottom-move2{z-index:2;top:104px;left:640px;}
-        .grass{top:213px;left:0;z-index:5;}
-        .left-leaf{top:46px;left:-42px;z-index:10;}
-        .left-tower1{top:53px;left:43px;z-index:3;}
-        .left-tower2{top:122px;left:108px;z-index:3;}
-        .Eiffel{top:0;right:170px;z-index:3;}
-        .Statue{top:100px;right:100px;z-index:3;}
-        .right-door{top:110px;left:570px;z-index:3;}
-        .center-green{top:130px;left:226px;z-index:3;}
+    .p1-bottom{width:640px;height:410px;position:absolute;top:630px;perspective:400px;}
+            .bottom-move1{z-index:1;top:90px;left:640px;}
+            .bottom-move2{z-index:2;top:104px;left:640px;}
+            .grass{top:213px;left:0;z-index:5;}
+            .left-leaf{top:46px;left:-42px;z-index:10;}
+            .left-tower1{top:53px;left:43px;z-index:3;}
+            .left-tower2{top:122px;left:108px;z-index:3;}
+            .Eiffel{top:0;right:170px;z-index:3;}
+            .Statue{top:100px;right:100px;z-index:3;}
+            .right-door{top:110px;left:570px;z-index:3;}
+            .center-green{top:130px;left:226px;z-index:3;}
 
-        .right-leaf1{top:57px;left:514px;z-index:15;}
-        .right-leaf2{top:260px;right:98px;z-index:15;}
-        .right-leaf3{top:195px;left:384px;z-index:15;}
-        .right-leaf4{top:248px;left:538px;z-index:15;}
-        .center-flower{top:258px;left:280px;z-index:15;}
-        .center-leaf{top:292px;left:253px;z-index:15;}
-        .left-leaf1{top:300px;left:10px;z-index:15;}
-        .left-leaf2{top:185px;left:16px;z-index:15;}
-        .left-leaf3{top:260px;left:60px;z-index:16;}
+            .right-leaf1{top:57px;left:514px;z-index:15;}
+            .right-leaf2{top:260px;right:98px;z-index:15;}
+            .right-leaf3{top:195px;left:384px;z-index:15;}
+            .right-leaf4{top:248px;left:538px;z-index:15;}
+            .center-flower{top:258px;left:280px;z-index:15;}
+            .center-leaf{top:292px;left:253px;z-index:15;}
+            .left-leaf1{top:300px;left:10px;z-index:15;}
+            .left-leaf2{top:185px;left:16px;z-index:15;}
+            .left-leaf3{top:260px;left:60px;z-index:16;}
 
 .P_Vip1{}
     .vip1-tip{top:162px;left:50%;margin-left:-233px;}
