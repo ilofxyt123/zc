@@ -5,11 +5,13 @@
             $(this).removeClass("opacity ani-fadeIn");
             if(this.cb){this.cb();};
             $(this).off("webkitAnimationEnd",$(this).fiHandler);
+            this.cb = null;
         },
         foHandler:function(e){
             $(this).addClass("none").removeClass("ani-fadeOut");
             if(this.cb){this.cb();};
             $(this).off("webkitAnimationEnd",$(this).foHandler);
+            this.cb = null;
         },
         fi:function(cb){
             this[0].cb = cb;
@@ -20,25 +22,6 @@
             $(this).on("webkitAnimationEnd",$(this).foHandler).addClass("ani-fadeOut");
         }
     });
-    var Main = new function(){//项目主流程
-        this.a={
-            ImageList:[
-                "images/aixin_sl.png",
-            ],//图片列表
-        };//主参数
-        this.f = {
-            start : function(){
-                Main.Utils.preloadImage(Main.a.ImageList,function(){
-                    console.log("图片加载完成");
-                    //开始流程中的其他函数
-                    this.p1();
-                },false)
-            },
-            p1:function(){
-                console.log("显示第一个页面")
-            },
-        };//主函数
-    };
     var Media = new function(){
         this.mutedEnd = false;
         this.WxMediaInit=function(){
@@ -105,7 +88,8 @@
                         }
                         if (haveLoaded == ImageURL.length && callback) {
                             setTimeout(function(){
-                                callback();
+                                callback[0]();
+                                callback[1]();
                             }, 500);
                         }
                     };
@@ -161,7 +145,7 @@
         }
     };
     Media.WxMediaInit();
-    a.output = {main:Main,media:Media,utils:Utils};
+    a.output = {media:Media,utils:Utils};
 
     var main = function(){
         this.isEnd;//活动结束标志
@@ -212,10 +196,16 @@
 
         this.picUrl = "images/";//图片路径
         this.ImageList = [
+            this.picUrl+"1.png",
+            this.picUrl+"3.png",
             this.picUrl+"bg1.jpg",
             this.picUrl+"bg2.jpg",
             this.picUrl+"bg3.jpg",
+            this.picUrl+"bird.png",
             this.picUrl+"bird_small.png",
+            this.picUrl+"bottom1.png",
+            this.picUrl+"bottom2.png",
+            this.picUrl+"code.jpg",
             this.picUrl+"load-pic.png",
             this.picUrl+"logo.png",
             this.picUrl+"music_btn.png",
@@ -327,18 +317,29 @@
             this.picUrl+"p4_pic35.png",
             this.picUrl+"p4_pic36.png",
             this.picUrl+"p4_pic37.png",
-            this.picUrl+"txt-1.png",
-            this.picUrl+"txt-2.png",
-            this.picUrl+"txt-3.png",
             this.picUrl+"phone.png",
             this.picUrl+"rule_btn.png",
             this.picUrl+"tip.png",
-            this.picUrl+"weile.png",
-
+            this.picUrl+"txt-1.png",
+            this.picUrl+"txt-2.png",
+            this.picUrl+"txt-3.png",
+            this.picUrl+"weile.png"
         ];
         this.init();
     };
     main.prototype = {
+        lazyLoad : function(){
+            var a = $(".lazy");
+            var len = a.length;
+            var imgObj;
+            var Load = function(){
+                for(var i=0;i<len;i++){
+                    imgObj = a.eq(i);
+                    imgObj.attr("src",imgObj.attr("data-src"));
+                }
+            };
+            Load();
+        },//将页面中带有.lazy类的图片进行加载
         init:function(){
             this.isEnd = $("#is_end").val();//boolean
             this.havePay = $("#havePay").val();//boolean
@@ -408,7 +409,7 @@
             this.bgm.isPlay = false;
         },
         start:function(){
-            Utils.preloadImage(this.ImageList,this.startCallback.bind(this),true);
+            Utils.preloadImage(this.ImageList,[this.lazyLoad.bind(this),this.startCallback.bind(this)],true);
         },
         startCallback:function(){
             ///////////////活动结束///////////////
