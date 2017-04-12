@@ -160,6 +160,8 @@
             touchAllow:true
         };
 
+        this.eff = document.getElementById("effect");
+
         this.bgm ={
             obj:document.getElementById("bgm"),
             isPlay:false,
@@ -185,6 +187,15 @@
             var percent = this.nowPeople/278;
             $(".progress-bar").css("transform","scaleX("+percent+")");
             /////////////处理参与活动页面///////////////
+
+            ///////////////处理中奖列表页面///////////////
+            (function(){
+                var listLength = $(".table-item") .length;
+                if(listLength!=0){
+                    $(".ListEmpty").remove();
+                }
+            }());
+            ///////////////处理参与活动页面///////////////
         },
         scrollInit:function(selector,start){
             this.touch.ScrollObj = $(selector);
@@ -206,9 +217,9 @@
         },
         start:function(){
             this.playbgm();
-            this.clockSwitch = setTimeout(function(){
-                                    $(".P_gameMask").addClass("ani-fadeOut");
-                                },3000);
+            // this.clockSwitch = setTimeout(function(){
+            //                         $(".P_gameMask").addClass("ani-fadeOut");
+            //                     },3000);
         },
         pgameleave:function(){
             $(".P_game").fadeOut();
@@ -233,7 +244,7 @@
                 if(nowTime == 0){
                     $(".stampBox").off("touchstart touchmove touchend");
                     $(".stamp-result").html(_self.gameData.score);
-                    console.log("游戏结束")
+                    console.log("游戏结束");
                     setTimeout(function(){
                         _self.pgameleave();
                         _self.pgameresult();
@@ -302,6 +313,7 @@
                     _self.touch.NewY = e.originalEvent.changedTouches[0].pageY;
                     _self.touch.addY = _self.touch.NewY - _self.touch.StartY;
                     if(_self.touch.addY<-30){
+                        _self.eff.play();
                         _self.gameData.$stampContainer.append(_self.gameData.stampappend);
                         _self.gameData.$goodContainer.append(_self.gameData.goodappend);
                         _self.gameData.score+=1;

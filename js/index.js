@@ -5,11 +5,13 @@
             $(this).removeClass("opacity ani-fadeIn");
             if(this.cb){this.cb();};
             $(this).off("webkitAnimationEnd",$(this).fiHandler);
+            this.cb = null;
         },
         foHandler:function(e){
             $(this).addClass("none").removeClass("ani-fadeOut");
             if(this.cb){this.cb();};
             $(this).off("webkitAnimationEnd",$(this).foHandler);
+            this.cb = null;
         },
         fi:function(cb){
             this[0].cb = cb;
@@ -20,25 +22,6 @@
             $(this).on("webkitAnimationEnd",$(this).foHandler).addClass("ani-fadeOut");
         }
     });
-    var Main = new function(){//项目主流程
-        this.a={
-            ImageList:[
-                "images/aixin_sl.png",
-            ],//图片列表
-        };//主参数
-        this.f = {
-            start : function(){
-                Main.Utils.preloadImage(Main.a.ImageList,function(){
-                    console.log("图片加载完成");
-                    //开始流程中的其他函数
-                    this.p1();
-                },false)
-            },
-            p1:function(){
-                console.log("显示第一个页面")
-            },
-        };//主函数
-    };
     var Media = new function(){
         this.mutedEnd = false;
         this.WxMediaInit=function(){
@@ -105,7 +88,8 @@
                         }
                         if (haveLoaded == ImageURL.length && callback) {
                             setTimeout(function(){
-                                callback();
+                                callback[0]();
+                                callback[1]();
                             }, 500);
                         }
                     };
@@ -161,7 +145,7 @@
         }
     };
     Media.WxMediaInit();
-    a.output = {main:Main,media:Media,utils:Utils};
+    a.output = {media:Media,utils:Utils};
 
     var main = function(){
         this.isEnd;//活动结束标志
@@ -174,6 +158,8 @@
         this.nowPeople;
         this.clockSwitch = undefined;//定时器句柄
         this.haveFill;//是否填写过中奖信息
+
+        this.have_go = false;//限制点击"参与活动"只能点击一次
 
         this.router;//管理页面跳转
 
@@ -193,7 +179,25 @@
             touchAllow:true
         };
 
-
+        this.FindSelect = {
+            provinceIndex:"0",
+            cityIndex:"0",
+            addressIndex:"",
+            province:"",
+            city:"",
+            address:"",
+            $provinceObj:$(".selectBox1 .province"),
+            $cityObj:$(".selectBox1 .city"),
+            $addressObj:$(".selectBox1 .address"),
+        };
+        this.FillSelect = {
+            provinceIndex:"",
+            cityIndex:"",
+            addressIndex:"",
+            province:"",
+            city:"",
+            address:""
+        };
 
         this.bgm ={
             obj:document.getElementById("bgm"),
@@ -212,10 +216,16 @@
 
         this.picUrl = "images/";//图片路径
         this.ImageList = [
+            this.picUrl+"1.png",
+            this.picUrl+"3.png",
             this.picUrl+"bg1.jpg",
             this.picUrl+"bg2.jpg",
             this.picUrl+"bg3.jpg",
+            this.picUrl+"bird.png",
             this.picUrl+"bird_small.png",
+            this.picUrl+"bottom1.png",
+            this.picUrl+"bottom2.png",
+            this.picUrl+"code.jpg",
             this.picUrl+"load-pic.png",
             this.picUrl+"logo.png",
             this.picUrl+"music_btn.png",
@@ -327,18 +337,29 @@
             this.picUrl+"p4_pic35.png",
             this.picUrl+"p4_pic36.png",
             this.picUrl+"p4_pic37.png",
-            this.picUrl+"txt-1.png",
-            this.picUrl+"txt-2.png",
-            this.picUrl+"txt-3.png",
             this.picUrl+"phone.png",
             this.picUrl+"rule_btn.png",
             this.picUrl+"tip.png",
-            this.picUrl+"weile.png",
-
+            this.picUrl+"txt-1.png",
+            this.picUrl+"txt-2.png",
+            this.picUrl+"txt-3.png",
+            this.picUrl+"weile.png"
         ];
         this.init();
     };
     main.prototype = {
+        lazyLoad : function(){
+            var a = $(".lazy");
+            var len = a.length;
+            var imgObj;
+            var Load = function(){
+                for(var i=0;i<len;i++){
+                    imgObj = a.eq(i);
+                    imgObj.attr("src",imgObj.attr("data-src"));
+                }
+            };
+            Load();
+        },//将页面中带有.lazy类的图片进行加载
         init:function(){
             this.isEnd = $("#is_end").val();//boolean
             this.havePay = $("#havePay").val();//boolean
@@ -349,6 +370,7 @@
             this.isOpen4999 = $("#isOpen4999").val();//boolean
             this.nowPeople = $(".now-people").html();//number
             this.haveFill = $("#haveFill").val();//boolean
+            this.goRegist = $("#goRegist").val();//boolean
 
 
             ///////////////////套后台后可删除///////////////////
@@ -361,6 +383,7 @@
             this.isOpen4999 = !!Number(this.isOpen4999);
             this.nowPeople = parseInt(this.nowPeople);
             this.haveFill = !!Number(this.haveFill);
+            this.goRegist = !!Number(this.goRegist);
             ///////////////////套后台后可删除///////////////////
 
             ///////////////处理查询页面///////////////
@@ -387,6 +410,60 @@
             ///////////////处理参与活动页面///////////////
             var percent = this.nowPeople/278;
             $(".progress-bar").css("transform","scaleX("+percent+")");
+            $(".act-txt1-number").html(278-this.nowPeople);
+
+            if(this.isOpen4999){//当前批次已经抽过
+                $(".hasOpen").removeClass("none");
+            }
+            else{//当前批次还没抽
+                $(".haventOpen").removeClass("none");
+            }
+            if(this.havePay){
+                $(".hasPayed").removeClass("none");
+            }
+            else{
+                $(".haventPayed").removeClass("none");
+            }
+
+            (function(){//滚动手机号码
+                var listLength = $(".numberItem").length,
+                    limit = -(listLength-1)*30,
+                    now = 0,
+                    $scroller = $(".list-number");
+                if(listLength!=0){
+                    $(".Empty").remove();
+                    setInterval(function(){
+                        if(now>limit){
+                            $scroller.addClass("transition");
+                            now-=30;
+                        }
+                        else{
+                            now = 0;
+                            $scroller.removeClass("transition")
+                        }
+                        $scroller.css({"transform":"translateY("+now+"px)"});
+                    },2000)
+                }
+            }());
+
+            (function(){//倒计时
+                var date = new Date(),
+                    toDay = date.getDate(),
+                    limit = 16,
+                    last;
+                    last = limit - toDay;
+                    $(".last-day").html(last)
+            }());
+
+            ///////////////处理参与活动页面///////////////
+
+            ///////////////处理中奖列表页面///////////////
+            (function(){
+                var listLength = $(".table-item") .length;
+                if(listLength!=0){
+                    $(".ListEmpty").remove();
+                }
+            }());
             ///////////////处理参与活动页面///////////////
         },
         scrollInit:function(selector,start){
@@ -408,7 +485,7 @@
             this.bgm.isPlay = false;
         },
         start:function(){
-            Utils.preloadImage(this.ImageList,this.startCallback.bind(this),true);
+            Utils.preloadImage(this.ImageList,[this.lazyLoad.bind(this),this.startCallback.bind(this)],true);
         },
         startCallback:function(){
             ///////////////活动结束///////////////
@@ -431,13 +508,18 @@
                 this.pcode();
                 return;
             }
+            if(this.goRegist){//刚才去注册了一下
+                // this.pact_mask();
+                $(".hd-left-scale").addClass("ani-toBig1");
+                $(".hd-right-scale").addClass("ani-toBig2");
+                this.pact();
+                return;
+            }
             if(this.havePay){//已经支付过
-                $(".has").removeClass("none");
                 this.pact_mask();
                 this.pact();
                 return;
             }
-            $(".havent").removeClass("none");
             this.p1();
             ///////////////活动未结束///////////////
         },
@@ -569,6 +651,13 @@
 
             /////////vip1//////////
             $(".vip-point").on("touchend",function(){
+                if(_self.FindSelect.address == ""){
+                    alert("请选择好门店");
+                    return;
+                }
+                _self.FindSelect.province = _self.FindSelect.$provinceObj[0].options[_self.FindSelect.provinceIndex].text;
+                _self.FindSelect.city = _self.FindSelect.$cityObj[0].options[_self.FindSelect.cityIndex].text;
+                _self.FindSelect.address = _self.FindSelect.$addressObj[0].options[_self.FindSelect.addressIndex].text;
                 $(".vipHand").addClass("ani-hand2");
             });
             $(".vipHand").on("webkitAnimationEnd",function(){
@@ -576,6 +665,18 @@
                     _self.pvip1leave();
                     _self.pvip2();
                 },500)
+            });
+            $(".selectBox1 .province").on("change",function(){
+                _self.FindSelect.provinceIndex = _self.FindSelect.$provinceObj[0].selectedIndex;
+                _self.FindSelect.province = _self.FindSelect.$provinceObj[0].options[_self.FindSelect.provinceIndex].text;
+            });
+            $(".selectBox1 .city").on("change",function(){
+                _self.FindSelect.cityIndex = _self.FindSelect.$cityObj[0].selectedIndex;
+                _self.FindSelect.city = _self.FindSelect.$cityObj[0].options[_self.FindSelect.cityIndex].text;
+            });
+            $(".selectBox1 .address").on("change",function(){
+                _self.FindSelect.addressIndex = _self.FindSelect.$addressObj[0].selectedIndex;
+                _self.FindSelect.address = _self.FindSelect.$addressObj[0].options[_self.FindSelect.addressIndex].text;
             });
             /////////vip1//////////
 
@@ -595,9 +696,9 @@
                         _self.pvip2leave();
                         _self.pact_mask();
                         _self.pact();
-                        _self.clockSwitch = setTimeout(function(){
-                            _self.pact_maskleave();
-                        },3000)
+                        // _self.clockSwitch = setTimeout(function(){
+                        //     _self.pact_maskleave();
+                        // },3000)
                     }
                 }
             });
@@ -638,7 +739,9 @@
 
             /////////pact//////////
             $(".go-btn").on("touchend",function(){
-               window.location.href = "game.html"
+                // if(_self.have_go){return;}
+               window.location.href = "game.html";
+                _self.have_go = true;
             });
             $(".chaxun-btn").on("touchend",function(){
                 _self.router = _self.pages[0]
@@ -793,8 +896,8 @@ $(function(){
     Main.start();
     Main.playbgm();
     /////////测试输出/////////
-    window.test = Main;
-    console.log(test);
+    window.Lee = Main;
+    console.log(Lee);
     /////////测试输出/////////
 
     // var main = output.main,
