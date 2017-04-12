@@ -111,7 +111,7 @@ html,body{
                     span.item{position:relative;float:left;height:46px;line-height:46px;font-size:22px;text-align:center;}
                     span.item-number{width:38px;}
                     span.item-photo{width:90px;}
-                        span.item-photo img{left:22px;}
+                        span.item-photo img{left:22px;width:46px;}
                     span.item-username{width:128px;}
                     span.item-name{width:90px;}
                     span.item-phone{width:143px;}

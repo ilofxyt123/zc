@@ -391,8 +391,8 @@
                 case 0:
                     break;
                 case 1://4999大奖
-                    if(this.haveFill){$(".result1-bottom-fill").removeClass("none");}
-                    else{$(".result1-bottom-nofill").removeClass("none");}
+                    if(this.haveFill){$(".result1-bottom-fill,.chaxun-title-fill").removeClass("none");}
+                    else{$(".result1-bottom-nofill,.chaxun-title-nofill").removeClass("none");}
                     $(".prize-result1").removeClass("none");
                     break;
                 case 2://188小奖
@@ -650,7 +650,7 @@
             /////////p1//////////
 
             /////////vip1//////////
-            $(".vip-point").on("touchend",function(){
+            $(".vip1-click-area").on("touchend",function(){
                 if(_self.FindSelect.address == ""){
                     alert("请选择好门店");
                     return;
