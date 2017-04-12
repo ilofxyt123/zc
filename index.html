@@ -201,7 +201,7 @@
 
     <img src="images/p3_pic01.png" class="act-txt">
     <div class="list color1">
-        <span class="Empty">暂无</span>
+        <span class="Empty">第一个大奖即将产生，请耐心等待！</span>
         <ul class="list-number transition">
             <li class="numberItem color1 numberFont">
                 <span class="scroll-name scroll-txt">!!!</span>
@@ -255,7 +255,13 @@
             <span class="now-people color1 numberFont">30</span>
             <img data-src="images/p3_pic04.png" class="lazy">
         </div>
-        <img data-src="images/p3_pic05.png" class="act-txt3 lazy">
+        <div class="act-txt3">
+            参与人数:
+            <!--<img src="images/p3_pic05.png" class="lazy">-->
+            <span class="pact-total-people">1000</span>
+            人
+        </div>
+
         <img data-src="images/tip.png" class="act-txt4 lazy">
     </div>
 
@@ -385,7 +391,7 @@
                     <span class="item item-phone">111****2365</span>
                 </li>
                 <span class="ListEmpty color1">
-                    暂无！
+                    第一个大奖即将产生，请耐心等待！
                 </span>
             </ul>
         </div>
@@ -462,10 +468,12 @@
 <input type="hidden" id="prizeType" value="1" /><!--奖品类型:0,1,2-->
 <input type="hidden" id="have_guanzhu" value="1" /><!--是否关注-->
 <input type="hidden" id="is_vip" value="1" /><!--是否是vip-->
-<input type="hidden" id="havePay" value="0" /><!--是否付过钱-->
+<input type="hidden" id="havePay" value="1" /><!--是否付过钱-->
 <input type="hidden" id="FromTuiSong" value="0" /><!--是否从推送进页面-->
 <input type="hidden" id="isOpen4999" value="1" /><!--4999大奖是否已知-->
 <input type="hidden" id="haveFill" value="1" /><!--4999大奖已经填写过信息-->
+<input type="hidden" id="goRegist" value="0" /><!--刚才去注册了一下-->
+
 <input type="hidden" id="openid" value="" />
 <input type="hidden" id="lottery_result" value="" />
 <input type="hidden" id="appId" value="" />

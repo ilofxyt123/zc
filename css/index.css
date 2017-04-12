@@ -140,7 +140,7 @@ html,body{
         .hd-right-scale{position:absolute;width:106px;height:218px;right:0;z-index:9;transform:scale(0.1,0.1);transform-origin:left bottom;}
             .right-scale1{top:0;right:65px;}
             .right-scale2{top:92px;right:0;}
-    .act-content{width:531px;height:384px;position: absolute;left:50%;margin-left:-265px;top:388px;z-index:4;}
+    .act-content{width:531px;height:384px;position: absolute;left:50%;margin-left:-265px;top:388px;z-index:4;text-align: center;}
         .act-bg{position: absolute;}
         .act-txt1{width:269px;height:22px;position: absolute;left:50%;margin-left:-135px;top:88px;}
             .act-txt1-number{position:absolute;width:40px;height:22px;line-height:22px;font-size:24px;left:209px;top:0;text-align: center;}
@@ -150,7 +150,8 @@ html,body{
         .people{position:absolute;width:120px;height:22px;left:50%;margin-left:-60px;top:150px;}
             .now-people{position:absolute;width:44px;height:22px;left:0;text-align: center;font-size:24px;line-height:22px;top:1px;}
             .people img{right:0;top:0;}
-        .act-txt3{top:185px;left:50%;margin-left:-103px;}
+        .act-txt3{height:31px;line-height:31px;position:relative;top:185px;margin:0 auto;background-color:#f5a67f;border-radius: 2px;color:white;width:auto;display:inline-block;padding:0 18px;}
+            .pact-total-people{color:white;font-size:20px;text-align: center;}
         .act-txt4{top:270px;left:50%;margin-left:-217px;}
     .go-btn{top:806px;left:50%;margin-left:-141px;z-index:5;}
     .chaxun{width:282px;height:125px;position: absolute;left:50%;margin-left:-141px;top:806px;z-index:5;}

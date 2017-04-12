@@ -370,6 +370,7 @@
             this.isOpen4999 = $("#isOpen4999").val();//boolean
             this.nowPeople = $(".now-people").html();//number
             this.haveFill = $("#haveFill").val();//boolean
+            this.goRegist = $("#goRegist").val();//boolean
 
 
             ///////////////////套后台后可删除///////////////////
@@ -382,6 +383,7 @@
             this.isOpen4999 = !!Number(this.isOpen4999);
             this.nowPeople = parseInt(this.nowPeople);
             this.haveFill = !!Number(this.haveFill);
+            this.goRegist = !!Number(this.goRegist);
             ///////////////////套后台后可删除///////////////////
 
             ///////////////处理查询页面///////////////
@@ -422,7 +424,8 @@
             else{
                 $(".haventPayed").removeClass("none");
             }
-            (function(){
+
+            (function(){//滚动手机号码
                 var listLength = $(".numberItem").length,
                     limit = -(listLength-1)*30,
                     now = 0,
@@ -431,7 +434,7 @@
                     $(".Empty").remove();
                     setInterval(function(){
                         if(now>limit){
-                            $scroller.addClass("transition")
+                            $scroller.addClass("transition");
                             now-=30;
                         }
                         else{
@@ -441,6 +444,15 @@
                         $scroller.css({"transform":"translateY("+now+"px)"});
                     },2000)
                 }
+            }());
+
+            (function(){//倒计时
+                var date = new Date(),
+                    toDay = date.getDate(),
+                    limit = 16,
+                    last;
+                    last = limit - toDay;
+                    $(".last-day").html(last)
             }());
 
             ///////////////处理参与活动页面///////////////
@@ -494,6 +506,13 @@
             this.loadleave();
             if(!this.guanzhu){//未关注公众号
                 this.pcode();
+                return;
+            }
+            if(this.goRegist){//刚才去注册了一下
+                // this.pact_mask();
+                $(".hd-left-scale").addClass("ani-toBig1");
+                $(".hd-right-scale").addClass("ani-toBig2");
+                this.pact();
                 return;
             }
             if(this.havePay){//已经支付过
@@ -568,7 +587,6 @@
         },
         pact_maskleave:function(){
             $(".P_mask").fo(function(){
-
                 $(".hd-left-scale").addClass("ani-toBig1");
                 $(".hd-right-scale").addClass("ani-toBig2");
             });

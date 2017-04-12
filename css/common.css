@@ -11,6 +11,7 @@ html {
     background: #000;
     -webkit-text-size-adjust: 100%;
     -ms-text-size-adjust: 100%;
+    font-family: Arial;
 }
 
 /* 内外边距通常让各个浏览器样式的表现位置不同 */

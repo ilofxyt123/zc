@@ -113,8 +113,12 @@
             <span class="now-people color1">276</span>
             <img src="images/p3_pic04.png">
         </div>
+        <div class="game-result-total">
+            参与人数:
+            <span class="gameRes-total-people">1000</span>
+            人
+        </div>
 
-        <img src="images/p4_pic10.png" class="game-result-total">
     </div>
 
     <img src="images/p4_pic11.png" class="game-result-detail">
@@ -142,7 +146,9 @@
 </div><!--查看可使用门店-->
 
 <div class="container P_gameMask">
-    <img src="images/p4_pic01.png" class="gameMask-txt">
+    <img src="images/p4_pic01.png?v5" class="gameMask-txt">
+    <img src="images/p4_hand.png" class="mask-hand ani-gameHand">
+    <img src="images/p4_arrow.png" class="mask-tip ani-gameTip">
 </div>
 
 <div class="container P_rule none">
@@ -202,7 +208,7 @@
                 </li>
 
                 <span class="ListEmpty color1">
-                    暂无！
+                    第一个大奖即将产生，请耐心等待！
                 </span>
             </ul>
         </div>
@@ -223,6 +229,7 @@
     </div>
 </div>
 <audio id="bgm" src="music.mp3" preload="auto" loop="true" class="iosPreload"></audio>
+<audio id="effect" src="eff.mp3" class="iosPreload"></audio>
 <script src="js/jquery-1.11.3.min.js"></script>
 <input type="hidden" id="is_end" value="0" /><!--活动是否结束-->
 <input type="hidden" id="is_chaxun" value="" />

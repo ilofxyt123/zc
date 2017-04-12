@@ -160,6 +160,8 @@
             touchAllow:true
         };
 
+        this.eff = document.getElementById("effect");
+
         this.bgm ={
             obj:document.getElementById("bgm"),
             isPlay:false,
@@ -215,9 +217,9 @@
         },
         start:function(){
             this.playbgm();
-            this.clockSwitch = setTimeout(function(){
-                                    $(".P_gameMask").addClass("ani-fadeOut");
-                                },3000);
+            // this.clockSwitch = setTimeout(function(){
+            //                         $(".P_gameMask").addClass("ani-fadeOut");
+            //                     },3000);
         },
         pgameleave:function(){
             $(".P_game").fadeOut();
@@ -311,6 +313,7 @@
                     _self.touch.NewY = e.originalEvent.changedTouches[0].pageY;
                     _self.touch.addY = _self.touch.NewY - _self.touch.StartY;
                     if(_self.touch.addY<-30){
+                        _self.eff.play();
                         _self.gameData.$stampContainer.append(_self.gameData.stampappend);
                         _self.gameData.$goodContainer.append(_self.gameData.goodappend);
                         _self.gameData.score+=1;

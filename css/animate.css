@@ -605,3 +605,46 @@
     -o-animation:ani-arrdown 2s ease-out 0s infinite normal forwards;
     animation:ani-arrdown 2s ease-out 0s infinite normal forwards;
 }
+
+@keyframes ani-gameTip {
+    100%{
+        transform:translateY(-30px);
+        opacity:1;
+    }
+}
+
+@-webkit-keyframes ani-gameTip {
+    100%{
+        -webkit-transform:translateY(-30px);
+        opacity:0;
+    }
+}
+
+.ani-gameTip{
+    -webkit-animation:ani-gameTip 0.8s ease-out 0s infinite normal forwards;
+    -moz-animation:ani-gameTip 0.8s ease-out 0s infinite normal forwards;
+    -o-animation:ani-gameTip 0.8s ease-out 0s infinite normal forwards;
+    animation:ani-gameTip 0.8s ease-out 0s infinite normal forwards;
+}
+
+@keyframes ani-gameHand {
+    100%{
+        transform:translateY(-30px);
+        opacity:1;
+    }
+}
+
+@-webkit-keyframes ani-gameHand {
+    100%{
+        -webkit-transform:translateY(-30px);
+        opacity:0;
+    }
+}
+
+.ani-gameHand{
+    -webkit-animation:ani-gameHand 1.2s ease-out 0s infinite normal forwards;
+    -moz-animation:ani-gameHand 1.2s ease-out 0s infinite normal forwards;
+    -o-animation:ani-gameHand 1.2s ease-out 0s infinite normal forwards;
+    animation:ani-gameHand 1.2s ease-out 0s infinite normal forwards;
+}
+
