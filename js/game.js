@@ -185,6 +185,15 @@
             var percent = this.nowPeople/278;
             $(".progress-bar").css("transform","scaleX("+percent+")");
             /////////////处理参与活动页面///////////////
+
+            ///////////////处理中奖列表页面///////////////
+            (function(){
+                var listLength = $(".table-item") .length;
+                if(listLength!=0){
+                    $(".ListEmpty").remove();
+                }
+            }());
+            ///////////////处理参与活动页面///////////////
         },
         scrollInit:function(selector,start){
             this.touch.ScrollObj = $(selector);
@@ -233,7 +242,7 @@
                 if(nowTime == 0){
                     $(".stampBox").off("touchstart touchmove touchend");
                     $(".stamp-result").html(_self.gameData.score);
-                    console.log("游戏结束")
+                    console.log("游戏结束");
                     setTimeout(function(){
                         _self.pgameleave();
                         _self.pgameresult();

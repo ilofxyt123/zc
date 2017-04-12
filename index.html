@@ -30,7 +30,7 @@
         css = '<'+'link '+'href='+"css/index.css?v"+Math.random()+' rel='+"stylesheet "+'type='+"text/css"+'>'
         document.write(css);
     </script>
-    <title>众筹</title>
+    <title>EP雅莹店庆禮</title>
 </head>
 <body>
 <div class="top">
@@ -200,7 +200,23 @@
 <div class="container P_active none">
 
     <img src="images/p3_pic01.png" class="act-txt">
-    <p class="list color1">xxxxxxxxxxxxxx</p>
+    <div class="list color1">
+        <span class="Empty">暂无</span>
+        <ul class="list-number transition">
+            <li class="numberItem color1 numberFont">
+                <span class="scroll-name scroll-txt">!!!</span>
+                <span class="scroll-phone scroll-txt">1575****570</span>
+            </li>
+            <li class="numberItem color1 numberFont">
+                <span class="scroll-name scroll-txt">!!!</span>
+                <span class="scroll-phone scroll-txt">1575****570</span>
+            </li>
+            <li class="numberItem color1 numberFont">
+                <span class="scroll-name scroll-txt">!!!</span>
+                <span class="scroll-phone scroll-txt">1575****570</span>
+            </li>
+        </ul>
+    </div>
 
     <div class="header">
         <img data-src="images/p3_pic09.png" class="hd-plane lazy">
@@ -226,11 +242,11 @@
 
     <div class="act-content">
         <img data-src="images/p3_pic06.png" class="act-bg lazy">
-        <div class="act-txt1 none havent">
+        <div class="act-txt1 none haventOpen">
             <img data-src="images/p3_pic07.png" class="lazy">
             <span class="act-txt1-number color1"></span>
         </div><!--未参与活动-->
-        <img data-src="images/over.png" class="act-txt2 has none lazy"><!--参与活动-->
+        <img data-src="images/over.png" class="act-txt2 hasOpen none lazy"><!--参与活动-->
 
         <div class="progress-bg">
             <img data-src="images/p3_pic03.png" class="progress-bar lazy">
@@ -243,8 +259,8 @@
         <img data-src="images/tip.png" class="act-txt4 lazy">
     </div>
 
-    <img data-src="images/p3_pic22.png" class="go-btn havent none lazy">
-    <div class="chaxun has none">
+    <img data-src="images/p3_pic22.png" class="go-btn haventPayed none lazy">
+    <div class="chaxun hasPayed none">
         <img data-src="images/p3_pic21.png" class="chaxun-btn lazy">
         <img data-src="images/p3_pic20.png" class="travel-list-btn lazy">
     </div>
@@ -368,41 +384,9 @@
                     <span class="item item-name">王小嘎</span>
                     <span class="item item-phone">111****2365</span>
                 </li>
-                <li class="table-item">
-                    <span class="item item-number">1</span>
-                    <span class="item item-photo"><img src="images/p4_pic34.png"></span>
-                    <span class="item item-username">星星点灯</span>
-                    <span class="item item-name">王小嘎</span>
-                    <span class="item item-phone">111****2365</span>
-                </li>
-                <li class="table-item">
-                    <span class="item item-number">1</span>
-                    <span class="item item-photo"><img src="images/p4_pic34.png"></span>
-                    <span class="item item-username">星星点灯</span>
-                    <span class="item item-name">王小嘎</span>
-                    <span class="item item-phone">111****2365</span>
-                </li>
-                <li class="table-item">
-                    <span class="item item-number">1</span>
-                    <span class="item item-photo"><img src="images/p4_pic34.png"></span>
-                    <span class="item item-username">星星点灯</span>
-                    <span class="item item-name">王小嘎</span>
-                    <span class="item item-phone">111****2365</span>
-                </li>
-                <li class="table-item">
-                    <span class="item item-number">1</span>
-                    <span class="item item-photo"><img src="images/p4_pic34.png"></span>
-                    <span class="item item-username">星星点灯</span>
-                    <span class="item item-name">王小嘎</span>
-                    <span class="item item-phone">111****2365</span>
-                </li>
-                <li class="table-item">
-                    <span class="item item-number">1</span>
-                    <span class="item item-photo"><img src="images/p4_pic34.png"></span>
-                    <span class="item item-username">星星点灯</span>
-                    <span class="item item-name">王小嘎</span>
-                    <span class="item item-phone">111****2365</span>
-                </li>
+                <span class="ListEmpty color1">
+                    暂无！
+                </span>
             </ul>
         </div>
     </div>
@@ -480,9 +464,8 @@
 <input type="hidden" id="is_vip" value="1" /><!--是否是vip-->
 <input type="hidden" id="havePay" value="0" /><!--是否付过钱-->
 <input type="hidden" id="FromTuiSong" value="0" /><!--是否从推送进页面-->
-<input type="hidden" id="isOpen4999" value="0" /><!--4999大奖是否已知-->
+<input type="hidden" id="isOpen4999" value="1" /><!--4999大奖是否已知-->
 <input type="hidden" id="haveFill" value="1" /><!--4999大奖已经填写过信息-->
-<input type="hidden" id="haveChou" value="1" /><!--当前批次是否抽过-->
 <input type="hidden" id="openid" value="" />
 <input type="hidden" id="lottery_result" value="" />
 <input type="hidden" id="appId" value="" />

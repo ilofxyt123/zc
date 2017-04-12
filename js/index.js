@@ -158,7 +158,6 @@
         this.nowPeople;
         this.clockSwitch = undefined;//定时器句柄
         this.haveFill;//是否填写过中奖信息
-        this.haveChou;
 
         this.have_go = false;//限制点击"参与活动"只能点击一次
 
@@ -181,12 +180,15 @@
         };
 
         this.FindSelect = {
-            provinceIndex:"",
-            cityIndex:"",
+            provinceIndex:"0",
+            cityIndex:"0",
             addressIndex:"",
             province:"",
             city:"",
-            address:""
+            address:"",
+            $provinceObj:$(".selectBox1 .province"),
+            $cityObj:$(".selectBox1 .city"),
+            $addressObj:$(".selectBox1 .address"),
         };
         this.FillSelect = {
             provinceIndex:"",
@@ -368,7 +370,6 @@
             this.isOpen4999 = $("#isOpen4999").val();//boolean
             this.nowPeople = $(".now-people").html();//number
             this.haveFill = $("#haveFill").val();//boolean
-            this.haveChou = $("#haveChou").val();//boolean
 
 
             ///////////////////套后台后可删除///////////////////
@@ -381,7 +382,6 @@
             this.isOpen4999 = !!Number(this.isOpen4999);
             this.nowPeople = parseInt(this.nowPeople);
             this.haveFill = !!Number(this.haveFill);
-            this.haveChou = !!Number(this.haveChou);
             ///////////////////套后台后可删除///////////////////
 
             ///////////////处理查询页面///////////////
@@ -410,12 +410,48 @@
             $(".progress-bar").css("transform","scaleX("+percent+")");
             $(".act-txt1-number").html(278-this.nowPeople);
 
-            if(this.haveChou){//当前批次已经抽过
-                $(".has").removeClass("none");
+            if(this.isOpen4999){//当前批次已经抽过
+                $(".hasOpen").removeClass("none");
             }
             else{//当前批次还没抽
-                $(".havent").removeClass("none");
+                $(".haventOpen").removeClass("none");
             }
+            if(this.havePay){
+                $(".hasPayed").removeClass("none");
+            }
+            else{
+                $(".haventPayed").removeClass("none");
+            }
+            (function(){
+                var listLength = $(".numberItem").length,
+                    limit = -(listLength-1)*30,
+                    now = 0,
+                    $scroller = $(".list-number");
+                if(listLength!=0){
+                    $(".Empty").remove();
+                    setInterval(function(){
+                        if(now>limit){
+                            $scroller.addClass("transition")
+                            now-=30;
+                        }
+                        else{
+                            now = 0;
+                            $scroller.removeClass("transition")
+                        }
+                        $scroller.css({"transform":"translateY("+now+"px)"});
+                    },2000)
+                }
+            }());
+
+            ///////////////处理参与活动页面///////////////
+
+            ///////////////处理中奖列表页面///////////////
+            (function(){
+                var listLength = $(".table-item") .length;
+                if(listLength!=0){
+                    $(".ListEmpty").remove();
+                }
+            }());
             ///////////////处理参与活动页面///////////////
         },
         scrollInit:function(selector,start){
@@ -601,7 +637,9 @@
                     alert("请选择好门店");
                     return;
                 }
-
+                _self.FindSelect.province = _self.FindSelect.$provinceObj[0].options[_self.FindSelect.provinceIndex].text;
+                _self.FindSelect.city = _self.FindSelect.$cityObj[0].options[_self.FindSelect.cityIndex].text;
+                _self.FindSelect.address = _self.FindSelect.$addressObj[0].options[_self.FindSelect.addressIndex].text;
                 $(".vipHand").addClass("ani-hand2");
             });
             $(".vipHand").on("webkitAnimationEnd",function(){
@@ -611,19 +649,16 @@
                 },500)
             });
             $(".selectBox1 .province").on("change",function(){
-                console.log("改变选项");
-                _self.FindSelect.provinceIndex = $(this)[0].selectedIndex;
-                _self.FindSelect.province = $(this)[0].options[_self.FindSelect.provinceIndex];
+                _self.FindSelect.provinceIndex = _self.FindSelect.$provinceObj[0].selectedIndex;
+                _self.FindSelect.province = _self.FindSelect.$provinceObj[0].options[_self.FindSelect.provinceIndex].text;
             });
             $(".selectBox1 .city").on("change",function(){
-                console.log("改变选项");
-                _self.FindSelect.cityIndex = $(this)[0].selectedIndex;
-                _self.FindSelect.city = $(this)[0].options[_self.FindSelect.cityIndex];
+                _self.FindSelect.cityIndex = _self.FindSelect.$cityObj[0].selectedIndex;
+                _self.FindSelect.city = _self.FindSelect.$cityObj[0].options[_self.FindSelect.cityIndex].text;
             });
             $(".selectBox1 .address").on("change",function(){
-                console.log("改变选项");
-                _self.FindSelect.addressIndex = $(this)[0].selectedIndex;
-                _self.FindSelect.address = $(this)[0].options[_self.FindSelect.addressIndex];
+                _self.FindSelect.addressIndex = _self.FindSelect.$addressObj[0].selectedIndex;
+                _self.FindSelect.address = _self.FindSelect.$addressObj[0].options[_self.FindSelect.addressIndex].text;
             });
             /////////vip1//////////
 
@@ -686,7 +721,7 @@
 
             /////////pact//////////
             $(".go-btn").on("touchend",function(){
-                if(_self.have_go){return;}
+                // if(_self.have_go){return;}
                window.location.href = "game.html";
                 _self.have_go = true;
             });
@@ -843,8 +878,8 @@ $(function(){
     Main.start();
     Main.playbgm();
     /////////测试输出/////////
-    window.test = Main;
-    console.log(test);
+    window.Lee = Main;
+    console.log(Lee);
     /////////测试输出/////////
 
     // var main = output.main,

@@ -47,7 +47,7 @@ html,body{
         .txt-3{top:101px;}
     .bird{left:122px;top:280px;z-index:2;transform:translate(-386px,100px);}
     .css-bird{width:149px;height:122px;background-image: url("../images/bird_small.png");background-repeat: no-repeat;background-size:auto;position: absolute;}
-    .css-bird2{width:257px;height:189px;background-image: url("../images/bird.png");background-repeat: no-repeat;background-size:auto;position: absolute;}
+    .css-bird2{width:257px;height:191px;background-image: url("../images/bird.png");background-repeat: no-repeat;background-size:auto;position: absolute;}
     /*.env{left:203px;top:307px;}*/
     .hand{top:424px;left:310px;}
     .p1-point-clickArea{width:138px;height:158px;position: absolute;left:50%;margin-left:-85px;top:304px;z-index:10;}
@@ -102,7 +102,7 @@ html,body{
         /*.vip2-bird{left:85px;top:-25px;}*/
         .vip2-bird{left:85px;top:-25px;transform:scale(0.64,0.64);transform-origin:left top;}
         .vip2-flower{bottom:-30px;right:16px;}
-        .age{width:40px;height:23px;position:absolute;left:214px;top:320px;line-height:23px;text-align: center;}
+        .age{width:40px;height:23px;position:absolute;left:75px;top:362px;line-height:23px;text-align: center;}
     .arrow_down{left:50%;margin-left:-22px;top:916px;}
 
 .P_Vip1{}
@@ -117,7 +117,13 @@ html,body{
 
 .P_active{}
     .act-txt{top:95px;left:50%;margin-left:-131px;}
-    p.list{width:100%;position: absolute;top:135px;text-align: center;}
+    .P_active .list{width:100%;position: absolute;top:135px;overflow:hidden;height:30px;}
+        .Empty{position:absolute;width:100%;text-align: center;height:30px;line-height:30px;}
+        ul.list-number{position: absolute;top:0;width:100%;}
+            .numberItem{height:30px;line-height:30px;text-align:center;}
+                .scroll-txt{display: inline-block;}
+                .scroll-phone{}
+                .scroll-name{}
     .header{width:531px;height:280px;position:absolute;left:50%;margin-left:-265px;top:175px;z-index:5;perspective: 400px;}
         .hd-plane{left:90px;top:0;}
         .hd-center-green{left:78px;top:10px;z-index:10;}
@@ -203,6 +209,7 @@ html,body{
         .table-header{left:50%;margin-left:-251px;top:12px;z-index:1;}
         .table-visible-area{position:absolute;overflow:hidden;height:320px;width:100%;top:50px;padding-top:10px;}
             ul.table-ul{position: relative;width:500px;margin:0 auto;transition:transform 0.2s ease-out;}
+                .ListEmpty{position:absolute;width:100%;height:300px;left:0;top:0;line-height:300px;text-align: center;font-size:24px;}
                 li.table-item{width:100%;height:56px;padding:5px 0;margin:5px 0;position: relative;line-height:56px;}
                     span.item{position:relative;float:left;height:46px;line-height:46px;font-size:22px;text-align:center;}
                     span.item-number{width:38px;}
