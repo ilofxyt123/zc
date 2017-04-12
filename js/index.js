@@ -678,9 +678,9 @@
                         _self.pvip2leave();
                         _self.pact_mask();
                         _self.pact();
-                        _self.clockSwitch = setTimeout(function(){
-                            _self.pact_maskleave();
-                        },3000)
+                        // _self.clockSwitch = setTimeout(function(){
+                        //     _self.pact_maskleave();
+                        // },3000)
                     }
                 }
             });
