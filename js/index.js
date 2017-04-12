@@ -158,6 +158,9 @@
         this.nowPeople;
         this.clockSwitch = undefined;//定时器句柄
         this.haveFill;//是否填写过中奖信息
+        this.haveChou;
+
+        this.have_go = false;//限制点击"参与活动"只能点击一次
 
         this.router;//管理页面跳转
 
@@ -177,7 +180,22 @@
             touchAllow:true
         };
 
-
+        this.FindSelect = {
+            provinceIndex:"",
+            cityIndex:"",
+            addressIndex:"",
+            province:"",
+            city:"",
+            address:""
+        };
+        this.FillSelect = {
+            provinceIndex:"",
+            cityIndex:"",
+            addressIndex:"",
+            province:"",
+            city:"",
+            address:""
+        };
 
         this.bgm ={
             obj:document.getElementById("bgm"),
@@ -350,6 +368,7 @@
             this.isOpen4999 = $("#isOpen4999").val();//boolean
             this.nowPeople = $(".now-people").html();//number
             this.haveFill = $("#haveFill").val();//boolean
+            this.haveChou = $("#haveChou").val();//boolean
 
 
             ///////////////////套后台后可删除///////////////////
@@ -362,6 +381,7 @@
             this.isOpen4999 = !!Number(this.isOpen4999);
             this.nowPeople = parseInt(this.nowPeople);
             this.haveFill = !!Number(this.haveFill);
+            this.haveChou = !!Number(this.haveChou);
             ///////////////////套后台后可删除///////////////////
 
             ///////////////处理查询页面///////////////
@@ -388,6 +408,14 @@
             ///////////////处理参与活动页面///////////////
             var percent = this.nowPeople/278;
             $(".progress-bar").css("transform","scaleX("+percent+")");
+            $(".act-txt1-number").html(278-this.nowPeople);
+
+            if(this.haveChou){//当前批次已经抽过
+                $(".has").removeClass("none");
+            }
+            else{//当前批次还没抽
+                $(".havent").removeClass("none");
+            }
             ///////////////处理参与活动页面///////////////
         },
         scrollInit:function(selector,start){
@@ -433,12 +461,10 @@
                 return;
             }
             if(this.havePay){//已经支付过
-                $(".has").removeClass("none");
                 this.pact_mask();
                 this.pact();
                 return;
             }
-            $(".havent").removeClass("none");
             this.p1();
             ///////////////活动未结束///////////////
         },
@@ -571,6 +597,11 @@
 
             /////////vip1//////////
             $(".vip-point").on("touchend",function(){
+                if(_self.FindSelect.address == ""){
+                    alert("请选择好门店");
+                    return;
+                }
+
                 $(".vipHand").addClass("ani-hand2");
             });
             $(".vipHand").on("webkitAnimationEnd",function(){
@@ -578,6 +609,21 @@
                     _self.pvip1leave();
                     _self.pvip2();
                 },500)
+            });
+            $(".selectBox1 .province").on("change",function(){
+                console.log("改变选项");
+                _self.FindSelect.provinceIndex = $(this)[0].selectedIndex;
+                _self.FindSelect.province = $(this)[0].options[_self.FindSelect.provinceIndex];
+            });
+            $(".selectBox1 .city").on("change",function(){
+                console.log("改变选项");
+                _self.FindSelect.cityIndex = $(this)[0].selectedIndex;
+                _self.FindSelect.city = $(this)[0].options[_self.FindSelect.cityIndex];
+            });
+            $(".selectBox1 .address").on("change",function(){
+                console.log("改变选项");
+                _self.FindSelect.addressIndex = $(this)[0].selectedIndex;
+                _self.FindSelect.address = $(this)[0].options[_self.FindSelect.addressIndex];
             });
             /////////vip1//////////
 
@@ -640,7 +686,9 @@
 
             /////////pact//////////
             $(".go-btn").on("touchend",function(){
-               window.location.href = "game.html"
+                if(_self.have_go){return;}
+               window.location.href = "game.html";
+                _self.have_go = true;
             });
             $(".chaxun-btn").on("touchend",function(){
                 _self.router = _self.pages[0]
