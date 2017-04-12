@@ -505,7 +505,6 @@
         },
         pact_maskleave:function(){
             $(".P_mask").fo(function(){
-
                 $(".hd-left-scale").addClass("ani-toBig1");
                 $(".hd-right-scale").addClass("ani-toBig2");
             });
