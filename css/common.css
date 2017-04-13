@@ -163,7 +163,7 @@ a, button, input {
         .rule{top:95px;left:50%;margin-left:-286px;}
 
 .P_share{z-index:100;background-color:rgba(0,0,0,0.8);}
-    .share-txt{top:120px;left:280px;}
+    .share-txt{top:150px;left:50%;margin-left:-159px;}
     .share-bird{top:25px;right:50px;transform-origin:left top;transform:scale(0.7);}
 
 .P_Address{background-color:rgba(0,0,0,0.8);z-index:200;}

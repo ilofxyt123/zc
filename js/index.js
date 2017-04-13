@@ -160,6 +160,7 @@
         this.haveFill;//是否填写过中奖信息
 
         this.have_go = false;//限制点击"参与活动"只能点击一次
+        this.haventFillAlert = false;//限制提示填写个人信息alert框只出现一次
 
         this.router;//管理页面跳转
 
@@ -651,14 +652,17 @@
 
             /////////vip1//////////
             $(".vip1-click-area").on("touchend",function(){
-                if(_self.FindSelect.address == ""){
-                    alert("请选择好门店");
+                if(_self.FindSelect.addressIndex == 0){
+                    $(".P_alert-address").fi();
                     return;
                 }
                 _self.FindSelect.province = _self.FindSelect.$provinceObj[0].options[_self.FindSelect.provinceIndex].text;
                 _self.FindSelect.city = _self.FindSelect.$cityObj[0].options[_self.FindSelect.cityIndex].text;
                 _self.FindSelect.address = _self.FindSelect.$addressObj[0].options[_self.FindSelect.addressIndex].text;
                 $(".vipHand").addClass("ani-hand2");
+            });
+            $(".P_alert-address .alert-address").on("touchend",function(){
+                $(".P_alert-address").fo();
             });
             $(".vipHand").on("webkitAnimationEnd",function(){
                 setTimeout(function(){
@@ -744,8 +748,12 @@
                 _self.have_go = true;
             });
             $(".chaxun-btn").on("touchend",function(){
-                _self.router = _self.pages[0]
+                _self.router = _self.pages[0];
                 _self.pactleave();
+                if(_self.prizeType == 1&&_self.haveFill==false&&_self.haventFillAlert==false){
+                    $(".P_alert-fill").fi();
+                    _self.haventFillAlert = true;
+                }
                 _self.pchaxun();
             });
             $(".travel-list-btn").on("touchend",function(){
@@ -788,6 +796,10 @@
                         _self.pact()
                         break;
                 }
+            });
+
+            $(".P_alert-fill .alert-Box").on("touchend",function(){//中4999提示填写信息提示框，点击关闭
+                $(".P_alert-fill").fo();
             });
 
             $(".chaxun-result1-btn1").on("touchend",function(){
