@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script>
+        var ua = navigator.userAgent;
+        var phoneWidth = parseInt(window.screen.width), phoneScale = phoneWidth / 640;
+        if (/Android (\d+\.\d+)/.test(ua)) {
+            var version = parseFloat(RegExp.$1);
+            var qqv = ua.match(/MQQBrowser\/(\d+)/) ? ua.match(/MQQBrowser\/(\d+)/)[1] : 0;
+            if (version > 2.3 && qqv < 6) {
+                document.write('<meta name="viewport" content="width=640, minimum-scale = ' + phoneScale + ", maximum-scale = " + phoneScale + ', target-densitydpi=device-dpi,user-scalable=no">')
+            } else {
+                document.write('<meta name="viewport" content="width=640, target-densitydpi=device-dpi,user-scalable=no">')
+            }
+        } else {
+            document.write('<meta name="viewport" content="width=640, user-scalable=no, target-densitydpi=device-dpi">')
+        }
+    </script>
+    <meta name="format-detection" content="telephone=no"/>
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="apple-touch-fullscreen" content="yes"/>
+    <script>
+        var css;
+        css = '<'+'link '+'href='+"css/common.css?v"+Math.random()+' rel='+"stylesheet "+'type='+"text/css"+'>'
+        document.write(css);
+        css = '<'+'link '+'href='+"css/game.css?v"+Math.random()+' rel='+"stylesheet "+'type='+"text/css"+'>'
+        document.write(css);
+        css = '<'+'link '+'href='+"css/animate.css?v"+Math.random()+' rel='+"stylesheet "+'type='+"text/css"+'>'
+        document.write(css);
+    </script>
+    <title>EP雅莹店庆禮</title>
+</head>
+<body>
+<div class="top">
+    <img src="images/logo.png" class="logo">
+    <img src="images/music_btn.png" class="music-btn">
+    <img src="images/rule_btn.png" class="rule-btn">
+</div>
+
+<div class="container P_bg P_bg1 none">
+    <img src="images/bg1.jpg" class="bg-pic">
+</div>
+<div class="container P_bg P_bg2 none">
+    <img src="images/bg2.jpg" class="bg-pic">
+
+    <div class="bg1-bottom">
+        <img src="images/p2_pic06.png" class="bg-left-leaf1 ani-leaf1">
+        <img src="images/p2_pic07.png" class="bg-left-leaf2 ani-leaf2">
+        <img src="images/p2_pic09.png" class="bg-right-leaf1 ani-leaf3">
+        <img src="images/p2_pic08.png" class="bg-right-leaf2 ani-leaf4">
+    </div>
+    <div class="bg1-top">
+        <img src="images/p1_pic12.png" class="ani-leaf5 rotateImg">
+    </div>
+</div>
+<div class="container P_bg P_bg3">
+    <img src="images/bg3.jpg" class="bg-pic">
+
+    <div class="bg1-bottom">
+        <img src="images/p2_pic06.png" class="bg-left-leaf1 ani-leaf1">
+        <img src="images/p2_pic07.png" class="bg-left-leaf2 ani-leaf2">
+        <img src="images/p2_pic09.png" class="bg-right-leaf1 ani-leaf3">
+        <img src="images/p2_pic08.png" class="bg-right-leaf2 ani-leaf4">
+    </div>
+    <div class="bg1-top">
+        <img src="images/p1_pic12.png" class="ani-leaf5 rotateImg">
+    </div>
+</div>
+
+<div class="container P_game">
+    <div class="gameScoreBox">
+        <img src="images/p4_pic02.png" class="game-score-bg">
+        <span class="sec color1">5</span>
+        <span class="game-score color1">0</span>
+    </div>
+
+    <div class="stampBox">
+        <div class="stampList">
+            <img src="images/p4_pic04.png" class="stamp-staic stamp-touch">
+            <!--<img src="images/" class="stamp-staic stamp-move stamp-touch">-->
+        </div>
+        <img src="images/p4_pic03.png" class="stamp-bottom">
+    </div>
+
+    <div class="good">
+        <!--<img src="images/1.png" class="ani-good">-->
+    </div>
+</div>
+
+<div class="container P_game_result none">
+    <img src="images/p4_pic05.png" class="game-result-top">
+    <div class="game-result-txt">
+        <span class="stamp-result color1"></span>
+        <img src="images/p4_pic06.png">
+    </div>
+    <img src="images/p4_pic07.png" class="game-result-188">
+    <img src="images/p4_pic08.png" class="game-result-btn1">
+    <img src="images/p4_pic09.png" class="game-result-btn2">
+
+    <div class="game-result-Box">
+        <div class="bar-top-txt1">
+            <img src="images/p3_pic07.png">
+            <span class="bar-top-txt1-number color1">{$num}</span>
+        </div>
+
+        <div class="progress-bg">
+            <img src="images/p3_pic03.png" class="progress-bar">
+        </div>
+
+        <div class="people">
+            <span class="now-people color1">{$total_person - $num}</span>
+            <img src="images/p3_pic04.png">
+        </div>
+        <div class="game-result-total">
+            参与人数:
+            <span class="gameRes-total-people">{$join_num}</span>
+            人
+        </div>
+
+    </div>
+
+    <img src="images/p4_pic11.png" class="game-result-detail">
+
+</div>
+
+<div class="container P_Address none">
+    <img src="images/p4_pic19.png" class="address-txt">
+    <div class="selectBox selectBox2">
+        <select  class="province select1 color1 addDataProvince"></select>
+        <select class="city select1 color1 addDataCity"></select>
+        <select  class="address select2 color1 addDataAddress"></select>
+    </div>
+    <img src="images/p1_pic29.png" class="add-xx">
+    <img src="images/p4_pic20.png" class="add-tip">
+</div><!--查看可使用门店-->
+
+<div class="container P_gameMask">
+    <img src="images/p4_pic01.png" class="gameMask-txt">
+    <img src="images/p4_hand.png" class="mask-hand ani-gameHand">
+    <img src="images/p4_arrow.png" class="mask-tip ani-gameTip">
+</div>
+
+<div class="container P_rule none">
+    <div class="rule-mask">
+        <img src="images/p1_pic29.png" class="rulexx">
+        <img src="images/p1_pic30.png" class="rule">
+    </div>
+</div>
+
+<div class="container P_List none">
+    <img src="images/p4_pic32.png" class="listxx">
+    <img src="images/p4_pic31.png" class="list-top-tip">
+
+    <div class="list-table">
+        <img src="images/p3_pic06.png" class="table-bg">
+        <img src="images/p4_pic33.png" class="table-header">
+        <div class="table-visible-area">
+            <ul class="table-ul color1">
+            	{if $prize_list[0].id neq ''}
+                {section name=loop loop=$prize_list}
+                <li class="table-item">
+                    <span class="item item-number">{$prize_list[loop].id}</span>
+                    <span class="item item-photo"><img src="{$prize_list[loop].avatar}"></span>
+                    <span class="item item-username">{$prize_list[loop].nickname}</span>
+                    <span class="item item-name">{$prize_list[loop].truename}</span>
+                    <span class="item item-phone">{$prize_list[loop].mobile}</span>
+                </li>
+                {/section}
+                {else}
+                <span class="ListEmpty color1">
+                    第一个大奖即将产生，请耐心等待！
+                </span>
+                {/if}
+            </ul>
+        </div>
+    </div>
+    <img src="images/p4_pic30.png" class="list-bottom-tip">
+</div>
+
+<div class="container P_share none">
+    <img src="images/p4_pic21.png" class="share-txt">
+    <div class="css-bird share-bird ani-birdfly"></div>
+</div>
+
+
+<div class="container hp none">
+    <div class="hp_box">
+        <img src="images/phone.png" class="phone">
+        <img src="images/weile.png" class="hp_tip">
+    </div>
+</div>
+<audio id="bgm" src="music.mp3" preload="auto" loop="true" class="iosPreload"></audio>
+<audio id="effect" src="eff.mp3" class="iosPreload"></audio>
+<script src="js/jquery-1.11.3.min.js"></script>
+
+<input type="hidden" id="nickname" value="{$nickname}" />
+<input type="hidden" id="is_end" value="{$is_end}" /><!--活动是否结束-->
+<input type="hidden" id="is_chaxun" value="" />
+<input type="hidden" id="have_guanzhu" value="{$is_follow}" /><!--是否关注-->
+<input type="hidden" id="is_vip" value="{$is_vip}" /><!--是否是vip-->
+<input type="hidden" id="havePay" value="{$is_pay}" /><!--是否付过钱-->
+<input type="hidden" id="FromTuiSong" value="0" /><!--是否从推送进页面-->>
+<input type="hidden" id="is_award" value="{$is_award}" />
+<input type="hidden" id="openid" value="{$openid}" />
+<input type="hidden" id="lottery_result" value="{$lottery_result}" />
+<input type="hidden" id="appId" value="{$signPackage.appId}" />
+<input type="hidden" id="timestamp" value="{$signPackage.timeStamp}" />
+<input type="hidden" id="nonceStr" value="{$signPackage.nonceStr}" />
+<input type="hidden" id="signature" value="{$signPackage.signature}" />
+<input type="hidden" id="pay_param" value='' />
+
+<input type="hidden" id="ip_province" value='{$ip_location.province}' />
+<input type="hidden" id="ip_city" value='{$ip_location.city}' />
+
+<script src="https://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+<script type="text/javascript" src="js/wxShare.js"></script>
+<script type="text/javascript" src="js/common.js"></script>
+
+<script>
+    var js;
+    js = '<' + 'script ' + 'src=' + "js/game.js?v" + Math.random() + '>' + '</' + 'script' + '>'
+    document.write(js)
+</script>
+</body>
+</html>
