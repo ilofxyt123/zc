@@ -471,6 +471,16 @@
             }());
             ///////////////处理参与活动页面///////////////
         },
+        limitNum:function(obj){//限制11位手机号
+            var value = $(obj).val();
+            var length = value.length;
+            //假设长度限制为10
+            if(length>11){
+                //截取前10个字符
+                value = value.substring(0,11);
+                $(obj).val(value);
+            }
+        },
         scrollInit:function(selector,start){
             this.touch.ScrollObj = $(selector);
             this.touch.StartY = 0;
@@ -521,7 +531,9 @@
                 return;
             }
             if(this.havePay){//已经支付过
-                this.pact_mask();
+                // this.pact_mask();
+                $(".hd-left-scale").addClass("ani-toBig1");
+                $(".hd-right-scale").addClass("ani-toBig2");
                 this.pact();
                 return;
             }
@@ -803,7 +815,8 @@
             });
 
             $(".P_alert-fill .alert-Box").on("touchend",function(){//中4999提示填写信息提示框，点击关闭
-                $(".P_alert-fill").fo();
+                $(".P_alert-fill,.P_chaxun").fadeOut();
+                $(".P_fill").fi();
             });
 
             $(".chaxun-result1-btn1").on("touchend",function(){
@@ -904,6 +917,10 @@
             });
             $(".rulexx").on("touchend",function(){//关闭规则
                 $(".P_rule").fo();
+            });
+
+            $("#phone").on("input",function(){
+                _self.limitNum($(this)[0]);
             });
 
             $(".music-btn").on("touchend",function(){

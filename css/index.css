@@ -227,7 +227,7 @@ html,body{
                     span.item-number{width:38px;}
                     span.item-photo{width:90px;}
                         span.item-photo img{left:22px;width:46px;}
-                    span.item-username{width:128px;}
+                    span.item-username{width:128px;overflow:hidden;text-overflow: ellipsis;white-space: nowrap;}
                     span.item-name{width:90px;}
                     span.item-phone{width:143px;}
     .list-bottom-tip{top:668px;left:50%;margin-left:-271px;}
