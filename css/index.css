@@ -211,8 +211,10 @@ html,body{
     .fill-bird{top:720px;left:77px;}
     .fill-bottom-tip{top:773px;left:50%;margin-left:-193px;}
 
+
+
 .P_List{}
-    .listxx{top:108px;left:62px;}
+    .listxx{top:56px;left:50%;margin-left:-16px;}
     .list-top-tip{top:110px;left:50%;margin-left:-214px;}
     .list-table{position:absolute;width:531px;height:384px;top:232px;left:50%;margin-left:-265px;}
         .table-bg{left:0;top:0;z-index:-1;}

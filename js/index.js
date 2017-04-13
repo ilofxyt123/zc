@@ -189,16 +189,20 @@
             address:"",
             $provinceObj:$(".selectBox1 .province"),
             $cityObj:$(".selectBox1 .city"),
-            $addressObj:$(".selectBox1 .address"),
+            $addressObj:$(".selectBox1 .address")
         };
         this.FillSelect = {
-            provinceIndex:"",
-            cityIndex:"",
+            provinceIndex:"0",
+            cityIndex:"0",
             addressIndex:"",
             province:"",
             city:"",
-            address:""
+            address:"",
+            $provinceObj:$(".fill-selectBox .province"),
+            $cityObj:$(".fill-selectBox .city"),
+            $addressObj:$(".fill-selectBox .address")
         };
+        this.alertTxt = ["请输入姓名","请输入正确的手机号","请选择门店"];
 
         this.bgm ={
             obj:document.getElementById("bgm"),
@@ -476,7 +480,7 @@
             this.touch.limitDown = this.touch.ScrollObj.height()<start?0:(start-this.touch.ScrollObj.height());
         },
         playbgm:function(){
-            Media.playMedia(this.bgm.obj.id)
+            Media.playMedia(this.bgm.obj.id);
             this.bgm.button.addClass("ani-bgmRotate");
             this.bgm.isPlay = true;
         },
@@ -661,7 +665,7 @@
                 _self.FindSelect.address = _self.FindSelect.$addressObj[0].options[_self.FindSelect.addressIndex].text;
                 $(".vipHand").addClass("ani-hand2");
             });
-            $(".P_alert-address .alert-address").on("touchend",function(){
+            $(".P_alert-address .alert-Box").on("touchend",function(){
                 $(".P_alert-address").fo();
             });
             $(".vipHand").on("webkitAnimationEnd",function(){
@@ -724,9 +728,9 @@
                         _self.pnotvipleave();
                         _self.pact_mask();
                         _self.pact();
-                        _self.clockSwitch = setTimeout(function(){
-                            _self.pact_maskleave();
-                        },3000)
+                        // _self.clockSwitch = setTimeout(function(){
+                        //     _self.pact_maskleave();
+                        // },3000)
                     }
                 }
             });
@@ -834,6 +838,50 @@
                 _self.pact();
             });
             /////////plist//////////
+
+            /////////P_fill//////////
+            $(".fill-submit-btn").on("touchend",function(){
+                var phoneNumber= $("#phone").val(),
+                    name = $("#name").val(),
+                    alert_txtBox = $(".alert-submit-txt"),
+                    alertBox = $(".P_alert-submit");
+                if(name == ""){
+                    alert_txtBox.html( _self.alertTxt[0]);
+                    alertBox.fi();
+                    return;
+                }
+                if(!(/^1(3|4|5|7|8)\d{9}$/.test(phoneNumber))){
+                    alert_txtBox.html( _self.alertTxt[1]);//手机号错误提示框
+                    alertBox.fi();
+                    return;
+                }
+                if(_self.FillSelect.addressIndex==0){
+                    alert_txtBox.html( _self.alertTxt[2]);
+                    alertBox.fi();
+                    return;
+                }
+                window.location.href = "index.html";
+            });//提交信息
+
+            $(".alert-Box-submit").on("touchend",function(){//关闭错误提示框
+                $(".P_alert-submit").fo();
+            });
+
+            $(".fill-selectBox .province").on("change",function(){
+                _self.FillSelect.provinceIndex = _self.FillSelect.$provinceObj[0].selectedIndex;
+                _self.FillSelect.province = _self.FillSelect.$provinceObj[0].options[_self.FillSelect.provinceIndex].text;
+            });
+            $(".fill-selectBox .city").on("change",function(){
+                _self.FillSelect.cityIndex = _self.FillSelect.$cityObj[0].selectedIndex;
+                _self.FillSelect.city = _self.FillSelect.$cityObj[0].options[_self.FillSelect.cityIndex].text;
+            });
+            $(".fill-selectBox .address").on("change",function(){
+                _self.FillSelect.addressIndex = _self.FillSelect.$addressObj[0].selectedIndex;
+                _self.FillSelect.address = _self.FillSelect.$addressObj[0].options[_self.FillSelect.addressIndex].text;
+            });
+
+
+            /////////P_fill//////////
             // $(document).on("webkitAnimationEnd",function(e){//试点技术，暂未启用，用以优化安卓fadeIn和fadeOut
             //     var animationName = e.originalEvent.animationName,
             //         $dom = $(e.target);
@@ -857,19 +905,7 @@
             $(".rulexx").on("touchend",function(){//关闭规则
                 $(".P_rule").fo();
             });
-            $(".fill-submit-btn").on("touchend",function(){
-                var phoneNumber= $("#phone").val(),
-                    name = $("#name").val();
-                if(name == ""){
-                    alert("请输入姓名");
-                    return;
-                }
-                if(!(/^1(3|4|5|7|8)\d{9}$/.test(phoneNumber))){
-                    alert("请输入正确的手机号");//手机号错误提示框
-                    return;
-                }
-                window.location.href = "index.html";
-            });//提交信息
+
             $(".music-btn").on("touchend",function(){
                 if(_self.bgm.isPlay){
                     _self.bgm.isPlay = false;

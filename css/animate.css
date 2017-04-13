@@ -606,6 +606,27 @@
     animation:ani-arrdown 2s ease-out 0s infinite normal forwards;
 }
 
+@keyframes ani-arrUp {
+    100%{
+        transform:translateY(-30px);
+        opacity:1;
+    }
+}
+
+@-webkit-keyframes ani-arrUp {
+    100%{
+        -webkit-transform:translateY(-30px);
+        opacity:1;
+    }
+}
+
+.ani-arrUp{
+    -webkit-animation:ani-arrUp 2s ease-out 0s infinite normal forwards;
+    -moz-animation:ani-arrUp 2s ease-out 0s infinite normal forwards;
+    -o-animation:ani-arrUp 2s ease-out 0s infinite normal forwards;
+    animation:ani-arrUp 2s ease-out 0s infinite normal forwards;
+}
+
 @keyframes ani-gameTip {
     100%{
         transform:translateY(-30px);
@@ -616,7 +637,7 @@
 @-webkit-keyframes ani-gameTip {
     100%{
         -webkit-transform:translateY(-30px);
-        opacity:0;
+        opacity:1;
     }
 }
 

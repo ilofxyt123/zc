@@ -99,7 +99,7 @@ html,body{
         .address{bottom:0;position:absolute;width:462px;height:51px;border:none;outline:none;background-image:url("../images/p2_pic12.png");background-repeat:no-repeat;line-height:54px;font-size:26px;text-align:center;background-color:rgba(0,0,0,0);-webkit-appearance:none;padding-left:36px;}
 .css-bird{width:149px;height:122px;background-image: url("../images/bird_small.png");background-repeat: no-repeat;background-size:auto;position: absolute;}
 .P_List{}
-    .listxx{top:108px;left:62px;}
+    .listxx{top:56px;left:50%;margin-left:-16px;}
     .list-top-tip{top:110px;left:50%;margin-left:-214px;}
     .list-table{position:absolute;width:531px;height:384px;top:232px;left:50%;margin-left:-265px;}
         .table-bg{left:0;top:0;z-index:-1;}
