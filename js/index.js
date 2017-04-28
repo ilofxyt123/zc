@@ -165,7 +165,7 @@
         this.router;//管理页面跳转
 
 
-        this.pages = ["pact",""];
+        this.pages = ["pact","endPay","endNoPay"];
 
         this.touch ={
             ScrollObj:undefined,
@@ -364,7 +364,7 @@
                 }
             };
             Load();
-        },//将页面中带有.lazy类的图片进行加载
+        },
         init:function(){
             this.isEnd = $("#is_end").val();//boolean
             this.havePay = $("#havePay").val();//boolean
@@ -453,11 +453,13 @@
 
             (function(){//倒计时
                 var date = new Date(),
-                    toDay = date.getDate(),
-                    limit = 16,
-                    last;
-                    last = limit - toDay;
-                    $(".last-day").html(last)
+                    nowDate = date.getDate(),
+                    nowHour = date.getHours(),
+                    limit = 17,
+                    lastHours;
+                    lastHours = (limit - nowDate)*24-nowHour-1;
+                    lastHours = lastHours<=0?0:lastHours;
+                    $(".last-day").html(lastHours)//剩余的小时
             }());
 
             ///////////////处理参与活动页面///////////////
@@ -506,10 +508,12 @@
             ///////////////活动结束///////////////
             if(this.isEnd){
                 if(this.havePay){//已经参与过活动
+                    this.loadleave();
                     this.pend_pay();
                     return;
                 }
                 if(!this.havePay){//如果没参与过活动
+                    this.loadleave();
                     this.pend_noPay();
                     return;
                 }
@@ -609,6 +613,7 @@
             });
         },
         pact:function(){
+            this.router = this.pages[0];
             $(".P_active").fadeIn();
         },
         pactleave:function(){
@@ -636,10 +641,18 @@
             $(".P_Address").fadeOut();
         },
         pend_pay:function(){
-            $(".P_end-Pay").fadeIn();
+            this.router = this.pages[1];//endPay
+            $(".P_end-Pay").fi();
+        },
+        pend_payleave:function(){
+            $(".P_end-Pay").fo();
         },
         pend_noPay:function(){
-            $(".P_end-noPay").fadeIn();
+            this.router = this.pages[2];
+            $(".P_end-noPay").fi();
+        },
+        pend_noPayleave:function(){
+            $(".P_end-noPay").fo();
         },
         pcode:function(){
             $(".P_code").fadeIn();
@@ -811,6 +824,8 @@
                     case "pact":
                         _self.pact()
                         break;
+                    case "endPay":
+                        _self.pend_pay();
                 }
             });
 
@@ -848,9 +863,37 @@
             /////////plist//////////
             $(".listxx").on("touchend",function(){
                 _self.plistleave();
-                _self.pact();
+                switch(_self.router){
+                    case "pact":
+                        _self.pact();
+                        break;
+                    case "endPay":
+                        _self.pend_pay();
+                        break;
+                    case "endNoPay":
+                        _self.pend_noPay();
+                        break;
+                }
             });
             /////////plist//////////
+
+            /////////pendpay//////////
+            $(".pend-chaxun-btn").on("touchend",function(){
+                _self.pchaxun();
+                _self.pend_payleave();
+            });
+            $(".pay-nameList-btn").on("touchend",function(){
+                _self.pend_payleave();
+                _self.plist();
+            });
+            /////////pendpay//////////
+
+            /////////pendnopay//////////
+            $(".noPay-nameList-btn").on("touchend",function(){
+                _self.plist();
+                _self.pend_noPayleave();
+            });
+            /////////pendnopay//////////
 
             /////////P_fill//////////
             $(".fill-submit-btn").on("touchend",function(){

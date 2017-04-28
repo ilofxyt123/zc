@@ -163,7 +163,7 @@ html,body{
         .chaxun-btn{top:0;}
         .travel-list-btn{bottom:0;left:50%;margin-left:-96px;}
 
-.P_chaxun{}
+.P_chaxun{z-index:11;}
     .back{left:47px;top:88px;z-index:2;}
     .prize-result1{position:absolute;width:640px;height:770px;top:70px;z-index:1;}
         .chaxun-title{top:0;left:50%;margin-left:-189px;}
